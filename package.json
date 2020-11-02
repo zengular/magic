@@ -1,4 +1,28 @@
 {
+  "_from": "zengular-magic",
+  "_id": "zengular-magic@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-ps81UphKoUBOFA9O78VioyLENnGOQG5eVKCE5HionRgPiVB9o7bMd8KXRx1XQun0FxSClSlcia2Y1WXJqu+ygw==",
+  "_location": "/zengular-magic",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "zengular-magic",
+    "name": "zengular-magic",
+    "escapedName": "zengular-magic",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/zengular-magic/-/zengular-magic-1.0.0.tgz",
+  "_shasum": "de264200aaa9d388968d1f9732bb3c54d38bb43f",
+  "_spec": "zengular-magic",
+  "_where": "/Users/elvis/Work/htdocs/gamer365",
   "author": {
     "name": "Gergely Laborci"
   },

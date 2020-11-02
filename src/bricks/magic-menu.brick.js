@@ -7,7 +7,6 @@ export default class MagicMenuBrick extends Brick{
 		this.$('.label').on.mouse.click((event, target) => target.parentElement.classList.toggle('open'));
 		this.$$('item').filter("[data-handler]").each(node=>{
 			let handler = magic.getHandler(node.dataset.handler);
-			console.log(handler)
 			node.innerHTML = `<i class="${handler.icon.small}"></i>${handler.label}`;
 		});
 		this.$$('item').filter("[data-handler]").on.click((event, target)=>{

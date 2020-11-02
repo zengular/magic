@@ -12,7 +12,6 @@ export default class MagicBrick extends Brick {
 
 	@Brick.listen(magic.event.itemChanged)
 	__reloadList(event) {
-		console.log(event.data.handler)
 		let list = this.$$('list').filter('[data-handler=' + event.data.handler + ']').brick;
 		if (list !== null) list.loadList();
 	}

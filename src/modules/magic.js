@@ -1,8 +1,5 @@
-import application from "../app";
-import dateFormat  from "dateformat";
-import Handler     from "./handler";
-import I18n        from "./i18n";
-
+import Handler from "./handler";
+import {I18n} from "zengular-util"
 
 /**
  * @property {I18n} i18n
@@ -36,9 +33,9 @@ class Magic {
 	 */
 	setHandler(handler) { this.handlers[handler.name] = handler;}
 
-	init(i18n = {}) {
+	init(i18n = {}, authApi) {
 		this.i18n = new I18n(i18n);
-		return fetch('/api/magic/auth')
+		return fetch(authApi)
 			.then(res => res.json())
 			.then(user => this.user = user);
 	}

@@ -1,0 +1,32 @@
+[is=magic-input-radio]{
+
+	border:1px solid #ddd;
+	padding: 0 0px;
+	line-height: 26px;
+	border-radius: 4px;
+	color: #0080b3;
+	font-weight: 500;
+	background-color: white;
+	max-height: 100px;
+	overflow-y: auto;
+	column-width: 120px;
+	column-rule: 1px solid #ddd;
+	column-gap: 0;
+
+	label{
+		cursor: pointer;
+		&:hover{
+			background-color: #00b7ff;
+			color:white;
+		}
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding: 0 8px;
+		display: block;
+		font-size:12px;
+		input{
+			vertical-align: sub;
+		}
+	}
+}

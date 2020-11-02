@@ -1,0 +1,40 @@
+[is=magic-input-fa-icon]{
+
+		box-sizing: border-box;
+		color: #333;
+		-webkit-font-smoothing: antialiased;
+		outline: none;
+		display: flex;
+		flex-direction: row;
+	select{
+		border:1px solid #ddd;
+		padding: 0 8px;
+		line-height: 26px;
+		border-radius: 4px 0 0 4px;
+		height:26px;
+		-webkit-appearance: none;
+		color: #0080b3;
+		font-weight: 500;
+		background-color: white;
+	}
+	i {
+		color: #333;
+		padding: 0;
+		width: 40px;
+		line-height: 26px;
+		text-align: left;
+	}
+	input {
+		border:1px solid #ddd;
+		padding: 0 8px;
+		line-height: 26px;
+		border-radius: 0 4px 4px 0;
+		border-left: 0;
+		height:26px;
+		-webkit-appearance: none;
+		color: #0080b3;
+		font-weight: 500;
+		background-color: white;
+		flex-grow: 1;
+	}
+}

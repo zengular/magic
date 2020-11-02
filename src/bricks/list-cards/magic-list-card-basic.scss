@@ -1,0 +1,74 @@
+[is=magic-list-card-basic] {
+
+	grid-template-areas:
+				"label"
+				"id"
+				"properties";
+	grid-template-rows: 18px 16px;
+	grid-template-columns: 100%;
+
+	&.medium {
+		div.id var{display: none;}
+		div.properties div {
+			flex-direction: column;
+			label { width: auto;}
+		}
+	}
+
+	&.small {
+		div.id var{display: none;}
+		div.label { text-align: center;}
+		div.properties div {
+			flex-direction: column;
+			label { width: auto;}
+		}
+	}
+
+
+	div.label {
+		grid-area: label;
+		font-size: 13px;
+		font-weight: bold;
+		color: #666;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	div.id {
+		grid-area: id;
+		font-size: 10px;
+		color: #666;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		var { font-style: normal;}
+	}
+	div.properties {
+		margin-top: 4px;
+		padding-top: 4px;
+		border-top: 1px solid #0002;
+		grid-area: properties;
+		font-size: 10px;
+		color: #666;
+		div {
+			display: flex;
+			label {
+				color: #999;
+				display: inline-block;
+				width: 100px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			var {
+				flex-grow: 1;
+				display: inline-block;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				font-style: normal;
+			}
+		}
+	}
+}
+

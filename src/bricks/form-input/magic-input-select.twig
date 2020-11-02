@@ -1,0 +1,5 @@
+<select (input)>
+	{% for option in props.options %}
+		<option value="{{ option }}">{{ i18n.get(handler,name,option) }}</option>
+	{% endfor %}
+</select>

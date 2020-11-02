@@ -1,0 +1,27 @@
+<header>
+	<div class="main">
+		<i class="icon {{ handler.icon.large }}"></i>
+		<label>{{ handler.list.title }}</label>
+		<var (count)></var>
+		<nav (nav)></nav>
+	</div>
+	<div class="quick-search">
+		<input (quick-search) type="search" placeholder="quick search">
+	</div>
+	<div class="paging">
+		<button (prev)><i class="fal fa-chevron-left"></i></button>
+		<input (page) type="number" min="1" max="1" value="1"><span (page-count)></span>
+		<button (next)><i class="fal fa-chevron-right"></i></button>
+		<select class="order" (sort)>
+			{% for field in handler.list.sort.fields %}
+				{% set default = handler.list.sort.default %}
+				<option value="`{{ field }}` asc" {% if default.field == field and default.order=='asc' %}selected{% endif %}>▼ {{ i18n.get(handler.name, field) }}</option>
+				<option value="`{{ field }}` desc"{% if default.field == field and default.order=='desc' %}selected{% endif %}>▲ {{ i18n.get(handler.name, field) }}</option>
+			{% endfor %}
+		</select>
+		{% if search %}<button (open-search)><i class="fal fa-search"></i></button>{% endif %}
+	</div>
+	{% if search %}<div (search) class="search" is="{{ search }}"></div>{% endif %}
+</header>
+
+<section (list)></section>

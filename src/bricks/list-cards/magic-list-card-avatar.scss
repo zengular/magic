@@ -1,0 +1,97 @@
+[is=magic-list-card-avatar] {
+
+	grid-template-areas:
+				"avatar label"
+				"avatar id"
+				"avatar properties";
+	grid-template-rows: 18px 16px;
+	grid-template-columns: 40px 1fr;
+
+	&.medium {
+		grid-template-areas:
+				"avatar label"
+				"avatar id"
+				"properties properties";
+		grid-template-rows: 18px 16px;
+		grid-template-columns: 40px 1fr;
+		div.id var{display: none;}
+		div.properties div {
+			flex-direction: column;
+			label { width: auto;}
+		}
+	}
+
+	&.small {
+		grid-template-areas:
+				"avatar"
+				"label"
+				"id"
+				"properties";
+		grid-template-rows: 34px 16px;
+		grid-template-columns: 100%;
+		div.id var{display: none;}
+		div.avatar img { display: block; margin: 0 auto; }
+		div.label { text-align: center;}
+		div.properties div {
+			flex-direction: column;
+			label { width: auto;}
+		}
+	}
+
+	div.avatar {
+		grid-area: avatar;
+		img {
+			width: 32px;
+			height: 32px;
+			border-radius: 16px;
+		}
+	}
+
+	div.label {
+		grid-area: label;
+		font-size: 13px;
+		font-weight: bold;
+		color: #666;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	div.id {
+		grid-area: id;
+		font-size: 10px;
+		color: #666;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		var { font-style: normal;}
+	}
+	div.properties {
+		margin-top: 4px;
+		padding-top: 4px;
+		border-top: 1px solid #0002;
+		grid-area: properties;
+		font-size: 10px;
+		color: #666;
+		div {
+			display: flex;
+			label {
+				color: #999;
+				display: inline-block;
+				width: 100px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			var {
+				flex-grow: 1;
+				display: inline-block;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				font-style: normal;
+			}
+		}
+	}
+
+}
+

@@ -1,0 +1,22 @@
+[is=magic]{
+	height: 100vh;
+	width: 100vw;
+	display: grid;
+	grid-template-areas:
+		"nav lst tab"
+		"nav lst frm";
+	grid-template-rows: 48px 1fr;
+	grid-template-columns: 200px 400px 1fr;
+	[is=magic-list]{
+		grid-area: lst;
+		display: none;
+	}
+	[is=magic-list]:first-of-type, :not([is=magic-list]) + [is=magic-list]{display: flex;}
+
+	[is=magic-form-wrapper]{
+		grid-area: frm;
+		display: none;
+	}
+	[is=magic-form-wrapper]:last-of-type{display: block;}
+
+}

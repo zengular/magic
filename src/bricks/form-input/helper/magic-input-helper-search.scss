@@ -1,0 +1,50 @@
+[is=magic-input-helper-search]{
+	display: flex;
+	flex-direction: column-reverse;
+	input{
+		display: block;
+		width: 100%;
+		padding: 0 8px;
+		line-height: 26px;
+		border:1px solid #ddd;
+		border-radius: 4px 4px 0 0 !important;
+		color: #0080b3;
+		font-weight: 500;
+		background-color: white;
+	}
+	>div:empty+input{
+		border-radius: 4px!important;
+	}
+	>div{
+		&:empty{display: none;}
+		font-size:12px;
+		line-height: 26px;
+		border:1px solid #ddd;
+		border-top:0;
+		border-radius: 0 0 4px 4px;
+		color: #818181;
+		font-weight: 400;
+		background-color: white;
+		max-height: 100px;
+		overflow: auto;
+		cursor: pointer;
+		>div{
+			padding: 0 8px;
+			&:hover, &:hover:before{
+				background-color: #00b7ff;
+				color:white;
+			}
+			&:not(:last-of-type){
+				border-bottom:1px solid #eee;
+			}
+			&:before{
+				font-family: "Font Awesome 5 Pro";
+				content:'\f067';
+				font-weight: bold;
+				color: #00b7ff;
+				margin-right: 8px;
+			}
+		}
+	}
+
+}

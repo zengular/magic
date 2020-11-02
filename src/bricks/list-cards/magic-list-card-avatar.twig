@@ -1,0 +1,10 @@
+<div class="avatar"><img src="{{ data.head.avatar }}"></div>
+<div class="label">{{ data.head.label }}</div>
+<div class="id"> {{ data.head.id }}{% if data.head.guid %} <var>| {{ data.head.guid }}</var>{% endif %}</div>
+{% if data.properties %}
+	<div class="properties">
+		{% for property, value in data.properties %}
+			<div><label>{{ property }}</label><var>{{ value }}</var></div>
+		{% endfor %}
+	</div>
+{% endif %}

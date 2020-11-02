@@ -1,0 +1,15 @@
+{
+  "author": {
+    "name": "Gergely Laborci"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "",
+  "license": "ISC",
+  "main": "export.js",
+  "name": "zengular-magic",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}

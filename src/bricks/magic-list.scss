@@ -1,0 +1,184 @@
+[is=magic-list] {
+	background-color: #8798a9;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
+	header {
+		flex-shrink: 0;
+		div.main {
+			background-color: #14181a;
+			display: grid;
+			grid-template-areas:
+				"icon label nav"
+				"icon info nav";
+			grid-template-rows: 28px 20px;
+			grid-template-columns: 48px 1fr auto;
+			padding: 0;
+			height: 48px;
+			color: #fff;
+			border-bottom: 1px solid #0001;
+			& > i {
+				grid-area: icon;
+				line-height: 48px;
+				width: 48px;
+				text-align: center;
+				color: #00b7ff;
+			}
+
+			label {
+				grid-area: label;
+				padding-top: 12px;
+				line-height: 16px;
+				vertical-align: baseline;
+			}
+			var {
+				grid-area: info;
+				font-size: 10px;
+				color: #fff;
+				font-style: normal;
+			}
+			nav {
+				grid-area: nav;
+				color: #fff;
+				i {
+					line-height: 48px;
+					width: 32px;
+					text-align: center;
+					cursor: pointer;
+				}
+			}
+
+		}
+		div.quick-search {
+			padding: 8px;
+			input {
+				font-size: 11px;
+				border: 0;
+				width: 100%;
+				padding: 4px 8px;
+				border-radius: 8px;
+			}
+		}
+		div.paging {
+			padding: 0 8px 8px;
+			font-size: 11px;
+			color: #fff;
+			height: 28px;
+			display: flex;
+			> * {
+				float: left;
+				margin-right: 4px;
+				height: 20px;
+				line-height: 20px;
+			}
+			:last-child {
+				margin-right: 0;
+			}
+			span:before {
+				content: ' of ';
+			}
+			select, input, button {
+				padding: 0 4px;
+				border: 0;
+				border-radius: 8px;
+				font-size: 11px;
+				color: #999;
+				background-color: white;
+				-webkit-appearance: none;
+				&::-webkit-outer-spin-button,
+				&::-webkit-inner-spin-button {
+					-webkit-appearance: none;
+					margin: 0;
+				}
+			}
+			button {
+				background-color: #0006;
+				color: white;
+				width: 20px;
+				cursor: pointer;
+			}
+			input {
+				width: 40px;
+				text-align: center;
+			}
+			select {
+				flex-grow: 1;
+				text-align: center;
+			}
+		}
+		div.search {
+			display: none;
+			select, input {
+				padding: 4px 8px;
+				border: 0;
+				border-radius: 8px;
+				font-size: 11px;
+				color: #999;
+				background-color: white;
+				-webkit-appearance: none;
+				&::-webkit-outer-spin-button,
+				&::-webkit-inner-spin-button {
+					-webkit-appearance: none;
+					margin: 0;
+				}
+				width: 100%;
+			}
+			&.visible {
+				display: block;
+				padding: 8px;
+				background-color: #0002;
+				> div {
+					display: flex;
+					label {
+						width: 80px;
+						color: white;
+						font-size: 11px;
+						line-height: 20px;
+					}
+					div.control {
+						flex-grow: 1;
+					}
+
+				}
+			}
+		}
+	}
+
+	section {
+		padding: 8px 0 8px 8px;
+		overflow-y: auto;
+		box-shadow: inset 0px 10px 5px -8px rgba(0, 0, 0, 0.3);
+		display: flex;
+		flex-wrap: wrap;
+		align-content: flex-start;
+		> div {
+			flex-grow: 1;
+			box-shadow: 0px 10px 5px -8px rgba(0, 0, 0, 0.3);
+			margin-bottom: 8px;
+			padding: 8px;
+			border-radius: 8px;
+			background-color: #e7ebef;
+			display: grid;
+			overflow: hidden;
+			max-width: calc(100% - 8px);;
+			margin-right: 8px;
+			cursor: pointer;
+			transition: all .3s;
+			.label {transition: all .3s;}
+			&:hover {
+				box-shadow: 0px 0px 5px -8px rgba(0, 0, 0, 0.3);
+				.label {color: #00b7ff;}
+				background-color: white;
+			}
+			&.medium {
+				min-width: calc(50% - 8px);
+				max-width: calc(50% - 8px);
+			}
+			&.small {
+				min-width: calc(33% - 8px);
+				max-width: calc(33% - 8px);
+			}
+		}
+	}
+}

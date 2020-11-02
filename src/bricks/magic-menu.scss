@@ -1,0 +1,53 @@
+[is=magic-nav]>nav {
+	user-select: none;
+	font-size: 11px;
+	div.block {
+		> div.label {
+			border-bottom: 1px solid #ffffff11;
+			cursor: pointer;
+			font-weight: bold;
+			line-height: 30px;
+			padding: 0px 16px;
+			i {
+				width: 32px;
+				padding-left: 0;
+				transition: all .2s;
+				color:#00b7ff;
+			}
+			&:hover i {padding-left: 10px;}
+			&:after {
+				font-family: "Font Awesome 5 Pro";
+				content: "\f053";
+				font-weight: 100;
+				float: right;
+				font-size: 10px;
+				color: #999;
+			}
+		}
+		div.items {
+			display: none;
+			background-color: #0003;
+		}
+		&.open {
+			border-bottom: 1px solid #fff4;
+
+			div.label:after {
+				content: "\f078";
+			}
+			div.items {
+				display: block;
+			}
+		}
+	}
+	div.items > div {
+		cursor: pointer;
+		border-bottom: 1px solid #ffffff11;
+		padding: 0 16px;
+		line-height: 30px;
+		i {width: 32px;padding-left: 0; transition: all .2s;				color:#00b7ff;
+		}
+		&:hover {
+			i {padding-left: 10px;}
+		}
+	}
+}

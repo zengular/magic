@@ -18,10 +18,23 @@ export default class MagicFormWrapperBrick extends Brick {
 	}
 
 	createViewModel() {
+
+		let buttons = this.handler.form.button.map(button => {
+			if (typeof button === 'function') {
+				return {
+					tag: button.tag,
+					data: {}
+				}
+			}
+			return {
+				tag: button.button.tag,
+				data: button.data
+			}
+		});
 		return {
 			handler: this.handler,
 			form: this.handler.form.brick.tag,
-			buttons: this.handler.form.button.map(button => button.tag),
+			buttons: buttons,
 			head: this.head,
 			item: this.item,
 			id: this.id

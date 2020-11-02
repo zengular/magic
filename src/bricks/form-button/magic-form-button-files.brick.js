@@ -9,6 +9,7 @@ export default class MagicFormButtonFilesBrick extends MagicFormButton {
 	createViewModel() { return {id: this.dataset.id}}
 
 	click() {
+
 	}
 
 }

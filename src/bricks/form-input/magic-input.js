@@ -18,12 +18,13 @@ export default class MagicInput extends Brick {
 			props: this.props,
 			i18n: magic.i18n,
 			name: this.name,
-			handler: 'user'
+			handler: this.handler
 		};
 	}
 
-	setup(item, props) {
+	setup(item, handler, props) {
 		this.props = props[this.name];
+		this.handler = handler;
 		this.render()
 			.then(() => this.value = item[this.name])
 	}

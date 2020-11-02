@@ -8,6 +8,7 @@ export default class MagicFormBrick extends Brick {
 		this.item = {};
 		this.props = {};
 		this.root.classList.add('magic-form');
+		this.handler = magic.getHandler(this.dataset.handler);
 	}
 
 	createViewModel() {
@@ -31,7 +32,7 @@ export default class MagicFormBrick extends Brick {
 					wrapper.appendChild(label);
 					input.parentElement.insertBefore(wrapper, input);
 					wrapper.appendChild(input);
-					input.controller.setup(item, props);
+					input.controller.setup(item, this.handler.name, props);
 					if (typeof input.dataset.inline !== "undefined") wrapper.classList.add('inline')
 				});
 			});

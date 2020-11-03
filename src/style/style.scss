@@ -1,0 +1,21 @@
+
+html, body{
+	width: 100%;
+	height: 100%;
+}
+body {
+	margin: 0;
+	background-color: #425363;
+	overflow: hidden;
+	background: radial-gradient(ellipse at center,transparent 0,transparent 1%,rgba(0,0,0,.65) 99%,rgba(0,0,0,.65) 100%),linear-gradient(180deg,#7db9e8 0,#1e5799);;
+}
+
+*{
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	outline: none;
+	font-family: "Helvetica Neue", "Roboto", "Calibri", "Arial", serif;
+}
+
+a {text-decoration: none;}

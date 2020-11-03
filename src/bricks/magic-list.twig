@@ -3,7 +3,13 @@
 		<i class="icon {{ handler.translate('icon.large', 'fad fa-rocket') }}"></i>
 		<label>{{ handler.translate('label.list', handler.name) }}</label>
 		<var (count)></var>
-		<nav (nav)></nav>
+		<nav (nav)>
+			{% for button in buttons %}
+				{% if button.render %}
+					<div (form-button) is="{{ button.tag }}" {% for prop, value in button.data %} data-{{ prop }} ="{{ value }}" {% endfor %} data-handler="{{ handler.name }}" data-id="{{ id }}"></div>
+				{% endif %}
+			{% endfor %}
+		</nav>
 	</div>
 	<div class="quick-search">
 		<input (quick-search) type="search" placeholder="quick search">

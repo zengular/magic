@@ -7,6 +7,7 @@ export default class MagicFormButton extends Brick {
 	onInitialize() {
 		this.handler = magic.getHandler(this.dataset.handler);
 		this.id = this.dataset.id;
+
 	}
 
 	createViewModel() { return {id: this.id}}

@@ -23,12 +23,14 @@ export default class MagicFormWrapperBrick extends Brick {
 			if (typeof button === 'function') {
 				return {
 					tag: button.tag,
-					data: {}
+					data: {},
+					render: true
 				}
 			}
 			return {
 				tag: button.button.tag,
-				data: button.data
+				data: button.data,
+				render: button.role ? magic.user.hasRole(button.role) : true
 			}
 		});
 		return {

@@ -1,6 +1,6 @@
 <header>
 	<div class="avatar">{% if user.avatar %}<img src="{{ user.avatar }}">{% endif %}</div>
 	<div class="name">{{ user.name }}</div>
-	<div class="controls"><i class="fal fa-times"></i> logout</div>
+	<div class="logout" (logout)><i class="fal fa-times"></i> logout</div>
 </header>
 <nav is="menu"></nav>

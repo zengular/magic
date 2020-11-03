@@ -11,6 +11,8 @@ export default class MagicNavBrick extends Brick {
 
 	createViewModel() { return {user: magic.user};}
 
-	onRender() {}
+	onRender() {
+		this.$$('logout').on.click(() => fetch(magic.authApi, {method: 'DELETE'}).then(() => document.location.reload()))
+	}
 
 }

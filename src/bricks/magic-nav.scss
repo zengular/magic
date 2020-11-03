@@ -1,6 +1,6 @@
 [is=magic-nav] {
 
-	background-color: #2c3e4e;
+	background-color: #2c3e4e99;
 	color: white;
 
 	header {
@@ -11,7 +11,7 @@
 		display: grid;
 		grid-template-areas:
 		"avatar name"
-		"avatar controls";
+		"avatar logout";
 		grid-template-rows: 16px 16px;
 		grid-template-columns: 40px 1fr;
 
@@ -27,7 +27,7 @@
 				height: 32px;
 			}
 		}
-		.name, .controls {
+		.name, .logout {
 			font-size: 11px;
 			line-height: 16px;
 		}
@@ -35,8 +35,12 @@
 			font-weight: bold;
 			grid-area: name;
 		}
-		.controls {
-			grid-area: controls;
+		.logout {
+			grid-area: logout;
+			cursor: pointer;
+			&:hover{
+				color:orangered;
+			}
 		}
 	}
 }

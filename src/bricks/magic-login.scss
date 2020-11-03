@@ -1,0 +1,33 @@
+[is=magic-login] {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	div{
+		width: 200px;
+		margin: 0 auto;
+		input, button{
+			border:0;
+			color: #00658c;
+			-webkit-text-fill-color: #00658c;
+			background-color: rgba(255,255,255,.9);
+			padding: 6px 10px;
+			font-weight: 500;
+			font-size: 12px;
+			width: 200px;
+			border-radius: 4px;
+			margin-bottom: 10px;
+			box-shadow: 0 5px 13px -5px rgba(0,0,0,.6);
+		}
+		button{
+			cursor: pointer;
+			transition: all .3s;
+			&:hover{
+				background-color: #00b7ff;
+				color: white;
+				-webkit-text-fill-color: #fff;
+
+			}
+		}
+	}
+}

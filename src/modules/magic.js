@@ -1,8 +1,11 @@
 import Handler from "./handler";
-import {I18n} from "zengular-util"
+import {I18n}  from "zengular-util"
+import User    from "./user";
 
 /**
  * @property {I18n} i18n
+ * @property {User} user
+ * @property {string} authApi
  */
 class Magic {
 
@@ -34,11 +37,15 @@ class Magic {
 	 */
 	addHandler(handler) { this.handlers[handler.name] = handler;}
 
-	init(i18n = {}, authApi) {
-		this.i18n.append(i18n);
+	init(authApi) {
+		this.authApi = authApi;
 		return fetch(authApi)
-			.then(res => res.json())
-			.then(user => this.user = user);
+			.then(res=> {
+				if(res.status === 200) return res.json();
+				else throw 'unauthorized';
+			})
+			.then(user => this.user = new User(user.id, user.name, user.avatar, user.roles))
+			.catch(()=>{})
 	}
 }
 

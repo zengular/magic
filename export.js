@@ -1,9 +1,10 @@
-import magic                       from "./src/modules/magic"
-import Handler                     from "./src/modules/handler"
-import MagicBrick                  from "./src/bricks/magic.brick"
-import MagicTabsBrick              from "./src/bricks/magic-tabs.brick"
-import MagicTabBrick               from "./src/bricks/magic-tab.brick"
-import MagicNavBrick               from "./src/bricks/magic-nav.brick"
+import "./src/style/style.scss";
+import magic                       from "./src/modules/magic";
+import Handler                     from "./src/modules/handler";
+import MagicBrick                  from "./src/bricks/magic.brick";
+import MagicTabsBrick              from "./src/bricks/magic-tabs.brick";
+import MagicTabBrick               from "./src/bricks/magic-tab.brick";
+import MagicNavBrick               from "./src/bricks/magic-nav.brick";
 import MagicMenuBrick              from "./src/bricks/magic-menu.brick";
 import MagicListBrick              from "./src/bricks/magic-list.brick";
 import MagicFormWrapperBrick       from "./src/bricks/magic-form-wrapper.brick";
@@ -26,8 +27,8 @@ import MagicInputDateBrick         from "./src/bricks/form-input/magic-input-dat
 import MagicInputDatetimeBrick     from "./src/bricks/form-input/magic-input-datetime.brick";
 import MagicInputFaIconBrick       from "./src/bricks/form-input/magic-input-fa-icon.brick";
 import MagicInputFloatBrick        from "./src/bricks/form-input/magic-input-float.brick";
-import MagicInputHelperSearchBrick
-                                   from "./src/bricks/form-input/helper/magic-input-helper-search.brick";
+import MagicLoginBrick             from "./src/bricks/magic-login.brick";
+import MagicInputHelperSearchBrick from "./src/bricks/form-input/helper/magic-input-helper-search.brick";
 import MagicInputIntegerBrick      from "./src/bricks/form-input/magic-input-integer.brick";
 import MagicInputRadioBrick        from "./src/bricks/form-input/magic-input-radio.brick";
 import MagicInputSelectBrick       from "./src/bricks/form-input/magic-input-select.brick";

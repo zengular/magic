@@ -17,23 +17,28 @@ export default class MagicListBrick extends Brick {
 	}
 
 	createViewModel() {
+		let buttons = this.handler.list.button.map(button => {
+			if (typeof button === 'function') {
+				return {
+					tag: button.tag,
+					data: {},
+					render: true
+				}
+			}
+			return {
+				tag: button.button.tag,
+				data: button.data,
+				render: button.role ? magic.user.hasRole(button.role) : true
+			}
+		});
 		return {
+			buttons,
 			handler: this.handler,
 			search: this.handler.list.search !== null ? this.handler.list.search.tag : null
 		}
 	}
 
 	onRender() {
-		this.handler.list.button.forEach(button => {
-			button.create('div', false)
-				.then(button => {
-					button.list = this;
-					button.render()
-					this.$$('nav').node.appendChild(button.root);
-				});
-		});
-
-
 		this.$$('quick-search').on.input(() => this.loadList(), 300);
 		this.$$('open-search').on.click(() => this.$$('search').node.classList.toggle('visible'));
 		this.$$('page').on.input((event, target) => {

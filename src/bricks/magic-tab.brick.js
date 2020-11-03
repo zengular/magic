@@ -12,9 +12,9 @@ export default class MagicTabBrick extends Brick {
 		this.handler = magic.getHandler(this.dataset.handler);
 		this.id = this.dataset.id;
 		this.view = {
-			icon: this.handler.icon.small,
+			icon: this.handler.translate('icon.small', 'fad fa-rocket'),
 			id: this.id,
-			label: this.handler.form.title
+			label: ''
 		};
 
 		return MagicFormWrapperBrick.create('div', true, {handler: this.handler.name})

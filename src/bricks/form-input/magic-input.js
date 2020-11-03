@@ -16,7 +16,6 @@ export default class MagicInput extends Brick {
 	createViewModel() {
 		return {
 			props: this.props,
-			i18n: magic.i18n,
 			name: this.name,
 			handler: this.handler
 		};
@@ -24,7 +23,7 @@ export default class MagicInput extends Brick {
 
 	setup(item, handler, props) {
 		this.props = props[this.name];
-		this.handler = handler;
+		this.handler = magic.getHandler(handler);
 		this.render()
 			.then(() => this.value = item[this.name])
 	}

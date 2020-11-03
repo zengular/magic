@@ -19,7 +19,6 @@ export default class MagicListBrick extends Brick {
 	createViewModel() {
 		return {
 			handler: this.handler,
-			i18n: magic.i18n,
 			search: this.handler.list.search !== null ? this.handler.list.search.tag : null
 		}
 	}

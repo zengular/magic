@@ -1,6 +1,6 @@
 <header>
-	<i class="{{ handler.icon.large }}"></i>
-	<label>{{ head.label ? head.label : handler.form.title }}</label>
+	<i class="{{ handler.translate('icon.large', 'fad fa-rocket') }}"></i>
+	<label>{{ head.label ? head.label : handler.translate('label.form', handler.name) }}</label>
 	<var>id: {{ head.id ? head.id : 'new' }}{% if head.guid %} | guid: {{ head.guid }}{% endif %}</var>
 	<nav>
 		{% for button in buttons %}

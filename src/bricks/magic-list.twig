@@ -1,7 +1,7 @@
 <header>
 	<div class="main">
-		<i class="icon {{ handler.icon.large }}"></i>
-		<label>{{ handler.list.title }}</label>
+		<i class="icon {{ handler.translate('icon.large', 'fad fa-rocket') }}"></i>
+		<label>{{ handler.translate('label.list', handler.name) }}</label>
 		<var (count)></var>
 		<nav (nav)></nav>
 	</div>
@@ -15,8 +15,8 @@
 		<select class="order" (sort)>
 			{% for field in handler.list.sort.fields %}
 				{% set default = handler.list.sort.default %}
-				<option value="`{{ field }}` asc" {% if default.field == field and default.order=='asc' %}selected{% endif %}>▼ {{ i18n.get(handler.name, field) }}</option>
-				<option value="`{{ field }}` desc"{% if default.field == field and default.order=='desc' %}selected{% endif %}>▲ {{ i18n.get(handler.name, field) }}</option>
+				<option value="`{{ field }}` asc" {% if default.field == field and default.order=='asc' %}selected{% endif %}>▼ {{ handler.translate(['order', field]) }}</option>
+				<option value="`{{ field }}` desc"{% if default.field == field and default.order=='desc' %}selected{% endif %}>▲ {{ handler.translate(['order', field]) }}</option>
 			{% endfor %}
 		</select>
 		{% if search %}<button (open-search)><i class="fal fa-search"></i></button>{% endif %}

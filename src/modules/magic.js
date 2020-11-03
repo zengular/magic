@@ -20,6 +20,7 @@ class Magic {
 	constructor() {
 		this.handlers = {};
 		this.user = null;
+		this.i18n = new I18n({});
 	}
 
 	/**
@@ -31,10 +32,10 @@ class Magic {
 	/**
 	 * @param {Handler} handler
 	 */
-	setHandler(handler) { this.handlers[handler.name] = handler;}
+	addHandler(handler) { this.handlers[handler.name] = handler;}
 
 	init(i18n = {}, authApi) {
-		this.i18n = new I18n(i18n);
+		this.i18n.append(i18n);
 		return fetch(authApi)
 			.then(res => res.json())
 			.then(user => this.user = user);

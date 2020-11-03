@@ -1,4 +1,5 @@
-import Brick from "zengular/src/brick";
+import Brick   from "zengular/src/brick";
+import {magic} from "zengular-magic";
 
 
 /**
@@ -15,21 +16,19 @@ export default class Handler {
 	 *
 	 * @param {string} name
 	 * @param {string} api
-	 * @param {string} label
-	 * @param {{large:string, small:string}}icon
 	 */
-	constructor(name, api, label, icon) {
+	constructor(name, api) {
+		this.api = api;
+		this.name = name;
+
 		this.list = {};
-		this.icon = {};
 		this.form = {
-			title: label,
 			button: [],
 			brick: null,
 			label: 'id',
 			setup: null
 		};
 		this.list = {
-			title: label,
 			button: [],
 			limit: 50,
 			search: null,
@@ -47,19 +46,6 @@ export default class Handler {
 			}
 		}
 
-		this.api = api;
-
-		this.name = name;
-		this.label = label;
-		if (typeof icon === "string") {
-			this.icon = {
-				small: icon,
-				large: icon
-			};
-		} else {
-			this.icon = icon;
-		}
-
 		this.fetch = {
 			list: (page, sort, quickSearch, search) => fetch(this.api + '/list/' + page, {
 					method: 'POST',
@@ -74,6 +60,20 @@ export default class Handler {
 			delete: (id) => fetch(this.api + '/delete/' + id, {method: "DELETE"})
 		};
 
+	}
+
+
+	translate(key, def = null) {
+		if(!Array.isArray(key)) key = [key];
+		key.unshift(this.name);
+		key.unshift('handler');
+		return magic.i18n.get(key, def);
+	}
+
+	set dictionary(data){
+		let dictionary = {handler:{}}
+		dictionary['handler'][this.name] = data;
+		magic.i18n.append(dictionary)
 	}
 
 }

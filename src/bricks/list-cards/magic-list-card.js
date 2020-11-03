@@ -16,7 +16,8 @@ export default class MagicListCardBrick extends Brick {
 		return {
 			data: (typeof this.handler.list.card.setup === 'function') ? this.handler.list.card.setup(this.id, this.item) : {},
 			id: this.id,
-			item: this.item
+			item: this.item,
+			handler: this.handler
 		}
 	}
 

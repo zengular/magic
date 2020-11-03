@@ -3,7 +3,7 @@
 {% if data.properties %}
 	<div class="properties">
 		{% for property, value in data.properties %}
-			<div><label>{{ property }}</label><var>{{ value }}</var></div>
+			<div><label>{{ handler.translate(['card.property',property]) }}</label><var>{{ value }}</var></div>
 		{% endfor %}
 	</div>
 {% endif %}

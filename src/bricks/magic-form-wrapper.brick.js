@@ -49,7 +49,8 @@ export default class MagicFormWrapperBrick extends Brick {
 				this.item = data.item;
 				this.props = data.props;
 				this.head = this.handler.form.setup(this.id, this.item);
-				this.tab.view.icon = this.handler.icon.small;
+				this.tab.view.label = this.head.label;
+				this.tab.view.icon = this.handler.translate('icon.small', 'fad fa-rocket');
 			})
 			.then(() => this.render())
 			.then(() => this.$$('form-body').brick.setup(this.item, this.props));

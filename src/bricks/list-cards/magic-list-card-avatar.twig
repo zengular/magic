@@ -1,4 +1,4 @@
-<div class="avatar"><img src="{{ data.head.avatar }}"></div>
+<div class="avatar">{% if data.head.avatar %}<img src="{{ data.head.avatar }}">{% endif %}</div>
 <div class="label">{{ data.head.label }}</div>
 <div class="id"> {{ data.head.id }}{% if data.head.guid %} <var>| {{ data.head.guid }}</var>{% endif %}</div>
 {% if data.properties %}

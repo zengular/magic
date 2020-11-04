@@ -18,6 +18,7 @@ import MagicFormButtonFilesBrick   from "./src/bricks/form-button/magic-form-but
 import MagicFormButtonReloadBrick  from "./src/bricks/form-button/magic-form-button-reload.brick";
 import MagicFormButtonSaveBrick    from "./src/bricks/form-button/magic-form-button-save.brick";
 import MagicFormButtonDeleteBrick  from "./src/bricks/form-button/magic-form-button-delete.brick";
+import MagicFormButtonCustomBrick  from "./src/bricks/form-button/magic-form-button-custom.brick";
 import MagicInput                  from "./src/bricks/form-input/magic-input";
 import MagicInputCheckboxBrick     from "./src/bricks/form-input/magic-input-checkbox.brick";
 import MagicInputCheckboxesBrick   from "./src/bricks/form-input/magic-input-checkboxes.brick";

@@ -171,6 +171,10 @@
 				.label {color: #00b7ff;}
 				background-color: white;
 			}
+			&.large {
+				min-width: calc(100% - 8px);
+				max-width: calc(100% - 8px);
+			}
 			&.medium {
 				min-width: calc(50% - 8px);
 				max-width: calc(50% - 8px);

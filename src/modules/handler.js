@@ -17,9 +17,10 @@ export default class Handler {
 	 * @param {string} name
 	 * @param {string} api
 	 */
-	constructor(name, api) {
+	constructor(name, api, q = null) {
 		this.api = api;
 		this.name = name;
+		this.q = q;
 
 		this.list = {};
 		this.form = {
@@ -47,17 +48,17 @@ export default class Handler {
 		}
 
 		this.fetch = {
-			list: (page, sort, quickSearch, search) => fetch(this.api + '/list/' + page, {
+			list: (page, sort, quickSearch, search) => fetch(this.api + '/list/' + page + (q ? '?'+q : ''), {
 					method: 'POST',
 					body: JSON.stringify({sort, quickSearch, search, limit: this.list.limit})
 				}
 			),
-			get: (id) => fetch(this.api + '/get' + (id ? ('/' + id) : '')),
-			save: (id, item) => fetch(this.api + '/save' + (id ? ('/' + id) : ''), {
+			get: (id) => fetch(this.api + '/get' + (id ? ('/' + id) : '') + (q ? '?'+q : '')),
+			save: (id, item) => fetch(this.api + '/save' + (id ? ('/' + id) : '') + (q ? '?'+q : ''), {
 				method: 'POST',
 				body: JSON.stringify(item)
 			}),
-			delete: (id) => fetch(this.api + '/delete/' + id, {method: "DELETE"})
+			delete: (id) => fetch(this.api + '/delete/' + id + (q ? '?'+q : ''), {method: "DELETE"})
 		};
 
 	}

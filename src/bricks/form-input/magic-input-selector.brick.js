@@ -18,6 +18,7 @@ export default class MagicInputSelectorBrick extends MagicInput {
 	createViewModel() {
 		let viewModel = super.createViewModel();
 		viewModel.minchar = this.minchar;
+		viewModel.api = this.dataset.api ? this.dataset.api : (this.props ? this.props.api : null);
 		return viewModel;
 	}
 
@@ -51,7 +52,8 @@ export default class MagicInputSelectorBrick extends MagicInput {
 
 	add(key) {
 		if(Array.isArray(key)) key = key.join(',');
-		fetch(this.props.api + '/' + key)
+		let api = this.dataset.api ? this.dataset.api : this.props.api;
+		fetch(api + '/' + key)
 			.then(res => res.json())
 			.then(items => {
 				items.forEach(item => {

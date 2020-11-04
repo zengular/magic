@@ -10,7 +10,7 @@ export default class MagicInput extends Brick {
 		this.name = this.dataset.name;
 	}
 
-	set value(value) { this.$$('input').node.value = value;}
+	set value(value) { if(typeof value !== "undefined") this.$$('input').node.value = value;}
 	get value() {return this.$$('input').node.value;}
 
 	createViewModel() {

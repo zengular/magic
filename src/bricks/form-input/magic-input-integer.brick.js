@@ -23,7 +23,7 @@ export default class MagicInputIntegerBrick extends MagicInput {
 
 	onRender() {
 		this.$$('input').listen('input', event => {
-			event.target.value = this.getValue();
+			event.target.value = this.value;
 		})
 	}
 

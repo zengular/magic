@@ -6,7 +6,8 @@
 				"properties";
 	grid-template-rows: 18px 16px;
 	grid-template-columns: 100%;
-
+	position: relative;
+	&.faded{opacity: .7;}
 	&.medium {
 		div.id var{display: none;}
 		div.properties div {
@@ -23,7 +24,21 @@
 			label { width: auto;}
 		}
 	}
-
+	i.icon{
+		box-shadow: -2px 2px 5px rgba(0,0,0,.3);
+		overflow: hidden;
+		position: absolute;
+		top:0px;
+		right: 0px;
+		font-size: 11px;
+		background-color: white;
+		border-radius: 8px;
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+		text-align: center;
+		color:#666;
+	}
 
 	div.label {
 		grid-area: label;

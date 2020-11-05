@@ -6,6 +6,8 @@
 				"avatar properties";
 	grid-template-rows: 18px 16px;
 	grid-template-columns: 40px 1fr;
+	position: relative;
+	&.faded{opacity: .7;}
 
 	&.medium {
 		grid-template-areas:
@@ -36,6 +38,22 @@
 			flex-direction: column;
 			label { width: auto;}
 		}
+	}
+
+	i.icon{
+		box-shadow: -2px 2px 5px rgba(0,0,0,.3);
+		overflow: hidden;
+		position: absolute;
+		top:0px;
+		right: 0px;
+		font-size: 11px;
+		background-color: white;
+		border-radius: 8px;
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+		text-align: center;
+		color:#666;
 	}
 
 	div.avatar {

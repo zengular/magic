@@ -23,7 +23,7 @@ export default class MagicInputFloatBrick extends MagicInput {
 
 	onRender() {
 		this.$$('input').listen('input', event => {
-			let value = this.getValue();
+			let value = this.value;
 			if (value % 1 === 0) value += '.0';
 			event.target.value = value;
 		})

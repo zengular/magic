@@ -1,3 +1,4 @@
+{% if data.head.icon %}<i class="icon {{ data.head.icon }}" {% if data.head["icon-color"] %}style="color:{{ data.head["icon-color"] }}" {% endif %}></i>{% endif %}
 <div class="label">{{ data.head.label }}</div>
 <div class="id"> {{ data.head.id }}{% if data.head.guid %} <var>| {{ data.head.guid }}</var>{% endif %}</div>
 {% if data.properties %}

@@ -27,6 +27,15 @@ export default class MagicFormBrick extends Brick {
 					let wrapper = document.createElement('div');
 					let label = document.createElement('label');
 					label.innerHTML = this.handler.translate(['input', input.dataset.name]);
+
+					let hint = this.$('.hint[data-for="'+input.dataset.name+'"]').node;
+					if(hint !== null){
+						label.classList.add('hinted');
+						label.addEventListener('click', event=>{
+							hint.classList.toggle('visible')
+						})
+					}
+
 					wrapper.classList.add('input');
 					wrapper.dataset.name = input.dataset.name;
 					wrapper.appendChild(label);

@@ -1,4 +1,23 @@
 [is=magic-input-text]{
+	position: relative;
+	button{
+		position: absolute;
+		cursor: pointer;
+		display: block;
+		background-color: #00b7ff;
+		color:white;
+		padding: 5px;
+		border: 0;
+		border-radius: 4px;
+		width: 29px;
+		opacity: .67;
+		right: 5px;
+		top: 5px;
+		transition: all .3s;
+		&:hover{
+			opacity: 1;
+		}
+	}
 	textarea{
 		display: block;
 		width: 100%;

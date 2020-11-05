@@ -7,6 +7,12 @@ import MagicInput from "./magic-input";
 @Brick.register('magic-input-checkboxes', twig)
 export default class MagicInputCheckboxesBrick extends MagicInput {
 
+	createViewModel() {
+		let viewModel = super.createViewModel();
+		viewModel.options = typeof this.dataset.options !== "undefined" ? this.dataset.options.split(',').map(item=>item.trim()) : (this.props ? this.props.options : []);
+		return viewModel;
+	}
+
 	get value() {
 		let checked = [];
 		this.$$('input').nodes.forEach(input => {

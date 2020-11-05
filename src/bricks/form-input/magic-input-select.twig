@@ -1,5 +1,5 @@
 <select (input)>
-	{% for option in props.options %}
+	{% for option in options %}
 		<option value="{{ option }}">{{ handler.translate(['option',name,option]) }}</option>
 	{% endfor %}
 </select>

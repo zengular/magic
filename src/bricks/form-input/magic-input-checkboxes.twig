@@ -1,3 +1,3 @@
-{% for option in props.options %}
+{% for option in options %}
 	<label title="{{ handler.translate(['option',name,option]) }}"><input (input) type="checkbox" value="{{ option }}"> {{ handler.translate(['option',name,option]) }}</label>
 {% endfor %}

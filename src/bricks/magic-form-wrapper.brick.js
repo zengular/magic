@@ -9,6 +9,7 @@ import {ZengularNotification} from "zengular-ui";
  * @property {Object} tabView
  */
 @Brick.register('magic-form-wrapper', twig)
+@Brick.addClass('form')
 export default class MagicFormWrapperBrick extends Brick {
 
 	onInitialize() {
@@ -52,6 +53,7 @@ export default class MagicFormWrapperBrick extends Brick {
 				this.props = data.props;
 				this.head = this.handler.form.setup(this.id, this.item);
 				this.tab.view.label = this.head.label;
+				this.tab.view.id = this.head.id;
 				this.tab.view.icon = this.handler.translate('icon.small', 'fad fa-rocket');
 			})
 			.then(() => this.render())
@@ -96,8 +98,6 @@ export default class MagicFormWrapperBrick extends Brick {
 				}
 			})
 			.catch(() => {})
-
-
 	}
 
 }

@@ -17,7 +17,7 @@ export default class MagicTabBrick extends Brick {
 			label: ''
 		};
 
-		return MagicFormWrapperBrick.create('div', true, {handler: this.handler.name})
+		return this.handler.form.super.create('div', true, {handler: this.handler.name})
 			.then((form) => {
 				this.form = form;
 				form.tab = this;

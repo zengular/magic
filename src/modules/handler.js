@@ -1,6 +1,5 @@
-import Brick   from "zengular/src/brick";
-import {magic} from "zengular-magic";
-
+import Brick                          from "zengular/src/brick";
+import {magic, MagicFormWrapperBrick} from "zengular-magic";
 
 /**
  * @property {string} api
@@ -46,6 +45,8 @@ export default class Handler {
 				}
 			}
 		}
+
+		this.form.super = MagicFormWrapperBrick;
 
 		this.fetch = {
 			list: (page, sort, quickSearch, search) => fetch(this.api + '/list/' + page + (q ? '?'+q : ''), {

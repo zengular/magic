@@ -13,10 +13,10 @@
 	}
 	[is=magic-list]:first-of-type, :not([is=magic-list]) + [is=magic-list]{display: flex;}
 
-	[is=magic-form-wrapper]{
+	>.form{
 		grid-area: frm;
 		display: none;
 	}
-	[is=magic-form-wrapper]:last-of-type{display: block;}
+	>.form:last-of-type{display: block;}
 
 }

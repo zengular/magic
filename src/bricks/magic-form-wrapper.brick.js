@@ -1,7 +1,7 @@
-import {Brick}                from "zengular";
-import twig                   from "./magic-form-wrapper.twig";
+import {Brick} from "zengular";
+import twig from "./magic-form-wrapper.twig";
 import "./magic-form-wrapper.scss";
-import magic                  from "../modules/magic";
+import magic from "../modules/magic";
 import {ZengularNotification} from "zengular-ui";
 
 
@@ -10,34 +10,37 @@ import {ZengularNotification} from "zengular-ui";
  */
 @Brick.register('magic-form-wrapper', twig)
 @Brick.addClass('form')
+@Brick.renderOnConstruct(false)
 export default class MagicFormWrapperBrick extends Brick {
 
 	onInitialize() {
-		this.handler = magic.getHandler(this.dataset.handler);
 		this.head = {};
 		this.item = {};
 	}
 
-	createViewModel() {
+	setup(data) {
+		this.id = data.id;
+		this.handler = magic.getHandler(data.handler);
+		this.load(this.id);
+	}
 
-		let buttons = this.handler.form.button.map(button => {
-			if (typeof button === 'function') {
-				return {
-					tag: button.tag,
-					data: {},
-					render: true
-				}
-			}
-			return {
+	createViewModel() {
+		let buttons = this.handler.form.button.map(button => typeof button === 'function' ?
+			{tag: button.tag, data: {}, render: true}
+			: {
 				tag: button.button.tag,
 				data: button.data,
 				render: button.role ? magic.user.hasRole(button.role) : true
 			}
-		});
+		);
+		let form = {
+			tag: typeof this.handler.form.brick === 'function' ? this.handler.form.brick.tag : this.handler.form.brick.brick.tag,
+			data: typeof this.handler.form.brick === 'function' ? {} : this.handler.form.brick.data
+		}
 		return {
-			handler: this.handler,
-			form: this.handler.form.brick.tag,
+			form: form,
 			buttons: buttons,
+			handler: this.handler,
 			head: this.head,
 			item: this.item,
 			id: this.id
@@ -52,9 +55,9 @@ export default class MagicFormWrapperBrick extends Brick {
 				this.item = data.item;
 				this.props = data.props;
 				this.head = this.handler.form.setup(this.id, this.item);
-				this.tab.view.label = this.head.label;
-				this.tab.view.id = this.head.id;
-				this.tab.view.icon = this.handler.translate('icon.small', 'fad fa-rocket');
+				this.tab.label = this.head.id ? 'id: ' + this.head.id : 'new';
+				this.tab.title = this.head.label ? this.head.label : this.handler.translate('label.form');
+				this.tab.icon = this.handler.translate('icon.small', 'fad fa-rocket');
 			})
 			.then(() => this.render())
 			.then(() => this.$$('form-body').brick.setup(this.item, this.props));
@@ -82,10 +85,7 @@ export default class MagicFormWrapperBrick extends Brick {
 				if (res.status === 200) {
 					res.json()
 						.then(data => this.load(data.id))
-						.then(() => {
-							this.fire(magic.event.itemChanged, {handler: this.handler.name});
-							this.tab.render();
-						})
+						.then(() => this.fire(magic.event.itemChanged, {handler: this.handler.name}))
 						.then(() => ZengularNotification.show(ZengularNotification.style.success, 'fas fa-thumbs-up', 'Item saved'))
 				} else {
 					res.json()

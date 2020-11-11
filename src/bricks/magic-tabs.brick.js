@@ -2,26 +2,29 @@ import {Brick}       from "zengular";
 import twig          from "./magic-tabs.twig";
 import "./magic-tabs.scss";
 import MagicTabBrick from "./magic-tab.brick";
+import TabData       from "../modules/tab-data";
 
 
 @Brick.register('magic-tabs', twig)
 export default class MagicTabsBrick extends Brick {
 
-	onInitialize() { this.view = {};}
-	createViewModel() { return this.view;}
-
-
-	open(handler, id) {
-		let tab = this.$$('tab').filter('[data-handler=' + handler + '][data-id="' + id + '"]').brick;
+	/**
+	 * @param {TabData} tabData
+	 * @returns {*}
+	 */
+	open(tabData) {
+		let tab = this.$$('tab').filter('[data-tab-id=' + tabData.id + ']').brick;
 		if (tab) return this.go(tab);
-
-		MagicTabBrick.create('div', true, {handler, id})
+		MagicTabBrick.create('div', true)
 			.then(tab => {
 				tab.actor('tab');
 				this.root.append(tab.root);
+				return tab.setup(tabData).then(() => tab);
+			})
+			.then((tab) => {
 				tab.root.addEventListener('click', () => this.go(tab));
 				this.go(tab);
-			})
+			});
 	}
 
 	@Brick.listen('change-tab')

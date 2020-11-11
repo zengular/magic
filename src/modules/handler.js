@@ -1,5 +1,6 @@
 import Brick                          from "zengular/src/brick";
 import {magic, MagicFormWrapperBrick} from "zengular-magic";
+import TabData                        from "zengular-magic/src/modules/tab-data";
 
 /**
  * @property {string} api
@@ -64,6 +65,13 @@ export default class Handler {
 
 	}
 
+	selectItemEventData(id = null){
+		return new TabData({
+			handler: this.name,
+			id: id
+		}, this.form.super, 'handler-'+this.name+'-'+ (id === null ? 'new' : id))
+
+	}
 
 	translate(key, def = null) {
 		if(!Array.isArray(key)) key = [key];

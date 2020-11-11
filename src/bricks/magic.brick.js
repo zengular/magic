@@ -28,7 +28,7 @@ export default class MagicBrick extends Brick {
 	}
 
 	@Brick.listen([magic.event.selectItem, magic.event.addNewItem])
-	__openTab(event) { this.$$('tabs').brick.open(event.data.handler, event.data.id ? event.data.id : '')}
+	__openTab(event) { this.$$('tabs').brick.open(event.data)}
 
 	@Brick.listen(magic.event.activateForm)
 	__appendForm(event) { this.root.append(event.data.form.root);}

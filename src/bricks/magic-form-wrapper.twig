@@ -11,4 +11,4 @@
 	</nav>
 </header>
 
-<form (form-body) is="{{ form }}" data-handler="{{ handler.name }}"></form>
+<form (form-body) is="{{ form.tag }}" data-handler="{{ handler.name }}" {% for prop, value in form.data %} data-{{ prop }} ="{{ value }}" {% endfor %}></form>

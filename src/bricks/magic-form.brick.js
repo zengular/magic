@@ -14,7 +14,8 @@ export default class MagicFormBrick extends Brick {
 	createViewModel() {
 		return {
 			item: this.item,
-			props: this.props
+			props: this.props,
+			dataset: this.dataset
 		}
 	}
 

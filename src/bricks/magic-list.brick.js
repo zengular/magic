@@ -75,10 +75,12 @@ export default class MagicListBrick extends Brick {
 	}
 
 	@Brick.listen(magic.event.addNewItem)
-	__addNewItem(event) { event.data = {handler: this.handler.name};}
+	__addNewItem(event) { event.data = this.handler.selectItemEventData();}
 
 	@Brick.listen(magic.event.selectItem)
-	__selectItem(event) { event.data.handler = this.handler.name;}
+	__selectItem(event) {
+		event.data = this.handler.selectItemEventData(event.data.id);
+	}
 
 	loadData(page) {
 		let sort = this.$$('sort').node.value;

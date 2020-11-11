@@ -16,6 +16,9 @@ export default class MagicAttachmentsModal extends Brick {
 
 	beforeRender(args) {
 		if (args) {
+			this.collections = {};
+			if (Array.isArray(args.collections)) args.collections.forEach(collection => this.collections[collection.name] = collection);
+			else this.collections = args.collections;
 			this.handler = args.handler;
 			this.id = args.id;
 			this.api = args.api ? args.api : this.handler.api + '/attachment'
@@ -62,19 +65,21 @@ export default class MagicAttachmentsModal extends Brick {
 	createViewModel() {
 		const formData = new FormData();
 		formData.append('id', this.id);
+		let collections = Object.keys(this.collections);
+		for (let i = 0; i < collections.length; i++) {
+			formData.append('collections[' + i + ']', collections[i]);
+		}
 		return fetch(this.api + '/get', {method: 'POST', body: formData})
 			.then(res => res.json())
 			.then(attachments => Object({
 				attachments,
 				getClassNameForExtension: getClassNameForExtension,
-				handler:this.handler
+				handler: this.handler
 			}))
 	}
 
 	onRender() {
-
 		this.$$('close').listen('click', () => {this.close()});
-
 		this.$$('attachment')
 			.listen('contextmenu', (event, target) => {
 				event.preventDefault();

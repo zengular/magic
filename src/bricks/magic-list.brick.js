@@ -93,7 +93,7 @@ export default class MagicListBrick extends Brick {
 	loadList(page = null) {
 		if (page === null) page = this.currentpage;
 		this.currentpage = page;
-		let cardBrick = this.handler.list.card.brick;
+		let cardBrick = this.handler.list.card;
 
 		this.loadData(page)
 			.then(data => {
@@ -106,7 +106,6 @@ export default class MagicListBrick extends Brick {
 				data.items.forEach(item => {
 					cardBrick.create('div', false)
 						.then(card => {
-							card.root.classList.add(this.handler.list.card.size);
 							card.dataset.handler = this.handler.name;
 							card.list = this;
 							card.render({id: item.id, item: item.data})

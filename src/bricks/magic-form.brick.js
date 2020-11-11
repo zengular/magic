@@ -15,7 +15,8 @@ export default class MagicFormBrick extends Brick {
 		return {
 			item: this.item,
 			props: this.props,
-			dataset: this.dataset
+			dataset: this.dataset,
+			handler: this.handler
 		}
 	}
 

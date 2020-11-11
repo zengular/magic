@@ -4,7 +4,12 @@ import magic   from "../../modules/magic";
 
 export default class MagicListCardBrick extends Brick {
 
-	onInitialize() { this.root.addEventListener('click', this.select.bind(this))}
+	get size() {return "large"; }
+
+	onInitialize() {
+		this.root.addEventListener('click', this.select.bind(this));
+		this.root.classList.add(this.size);
+	}
 
 	beforeRender(args) {
 		this.item = args.item;
@@ -14,12 +19,14 @@ export default class MagicListCardBrick extends Brick {
 
 	createViewModel() {
 		return {
-			data: (typeof this.handler.list.card.setup === 'function') ? this.handler.list.card.setup(this.id, this.item) : {},
+			data: this.init(this.id, this.item),
 			id: this.id,
 			item: this.item,
 			handler: this.handler
 		}
 	}
+
+	init(id, item) { return {}; }
 
 	select() { this.fire(magic.event.selectItem, {id: this.id})}
 

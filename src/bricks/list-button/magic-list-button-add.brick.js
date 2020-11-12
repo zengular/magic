@@ -1,15 +1,9 @@
-import {Brick} from "zengular";
-import twig    from "./magic-list-button-add.twig";
-import "./magic-list-button-add.scss";
-import magic   from "../../modules/magic";
+import magic       from "../../modules/magic";
+import MagicButton from "../magic-button/magic-button";
 
-@Brick.register('magic-list-button-add', twig)
-export default class MagicListButtonAddBrick extends Brick {
 
-	onRender() {
-		this.$$('button').on.mouse.click((event, target)=>{
-			this.fire(magic.event.addNewItem);
-		})
-	}
-
+export default class MagicListButtonAddBrick extends MagicButton {
+	get icon() { return "fal fa-plus"; }
+	get title() { return "Create new"; }
+	click() { this.fire(magic.event.addNewItem); }
 }

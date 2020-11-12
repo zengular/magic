@@ -47,8 +47,6 @@ export default class MagicListBrick extends Brick {
 			target.value = page;
 			this.loadList(page);
 		}, 300);
-
-
 		this.$$('sort').on.input(() => {this.loadList(1)});
 		this.$$('prev').on.click(() => {
 			let page = parseInt(this.$$('page').node.value);
@@ -64,6 +62,15 @@ export default class MagicListBrick extends Brick {
 			this.$$('page').node.value = page;
 			this.loadList(page);
 		});
+		this.handler.list.buttons.forEach(button=>{
+			button.create('div', false)
+				.then(button=>{
+					button.list = this;
+					this.$$('nav').node.appendChild(button.root);
+					return button.render();
+				})
+		})
+
 
 		this.loadList(1);
 	}

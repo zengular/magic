@@ -1,10 +1,9 @@
-import {Brick}                from "zengular";
 import magic                  from "../../modules/magic";
-import MagicFormButton        from "./magic-form-button";
 import {ZengularNotification} from "zengular-ui";
+import MagicButton            from "../magic-button/magic-button";
 
 
-export default class MagicFormButtonDeleteBrick extends MagicFormButton {
+export default class MagicFormButtonDeleteBrick extends MagicButton {
 	get icon(){ return "fal fa-times";}
 	get title(){ return "delete";}
 	get visible(){ return this.id;}

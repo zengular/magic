@@ -4,11 +4,11 @@
 		<label>{{ handler.translate('label.list', handler.name) }}</label>
 		<var (count)></var>
 		<nav (nav)>
-			{% for button in buttons %}
-				{% if button.render %}
-					<div (form-button) is="{{ button.tag }}" {% for prop, value in button.data %} data-{{ prop }} ="{{ value }}" {% endfor %} data-handler="{{ handler.name }}" data-id="{{ id }}"></div>
-				{% endif %}
-			{% endfor %}
+{#			{% for button in buttons %}#}
+{#				{% if button.render %}#}
+{#					<div (form-button) is="{{ button.tag }}" {% for prop, value in button.data %} data-{{ prop }} ="{{ value }}" {% endfor %} data-handler="{{ handler.name }}" data-id="{{ id }}"></div>#}
+{#				{% endif %}#}
+{#			{% endfor %}#}
 		</nav>
 	</div>
 	<div class="quick-search">

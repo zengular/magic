@@ -13,7 +13,7 @@ import MagicListCardBrick          from "./src/bricks/list-cards/magic-list-card
 import MagicListCardBasicBrick     from "./src/bricks/list-cards/magic-list-card-basic.brick";
 import MagicListCardAvatarBrick    from "./src/bricks/list-cards/magic-list-card-avatar.brick";
 import MagicListButtonAddBrick     from "./src/bricks/list-button/magic-list-button-add.brick";
-import MagicFormButton             from "./src/bricks/form-button/magic-form-button";
+import MagicButton                 from "./src/bricks/magic-button/magic-button";
 import MagicFormButtonFilesBrick   from "./src/bricks/form-button/magic-form-button-files.brick";
 import MagicFormButtonReloadBrick  from "./src/bricks/form-button/magic-form-button-reload.brick";
 import MagicFormButtonSaveBrick    from "./src/bricks/form-button/magic-form-button-save.brick";
@@ -27,7 +27,6 @@ import MagicInputDateBrick         from "./src/bricks/form-input/magic-input-dat
 import MagicInputDatetimeBrick     from "./src/bricks/form-input/magic-input-datetime.brick";
 import MagicInputFaIconBrick       from "./src/bricks/form-input/magic-input-fa-icon.brick";
 import MagicInputFloatBrick        from "./src/bricks/form-input/magic-input-float.brick";
-import MagicLoginBrick             from "./src/bricks/magic-login.brick";
 import MagicInputHelperSearchBrick from "./src/bricks/form-input/helper/magic-input-helper-search.brick";
 import MagicInputIntegerBrick      from "./src/bricks/form-input/magic-input-integer.brick";
 import MagicInputRadioBrick        from "./src/bricks/form-input/magic-input-radio.brick";
@@ -49,7 +48,7 @@ export {
 	MagicListBrick,
 	MagicFormBrick,
 	MagicFormWrapperBrick,
-	MagicFormButton,
+	MagicButton,
 	MagicFormButtonDeleteBrick,
 	MagicFormButtonFilesBrick,
 	MagicFormButtonReloadBrick,

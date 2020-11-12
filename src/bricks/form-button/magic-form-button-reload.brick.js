@@ -1,8 +1,8 @@
-import {Brick}                from "zengular";
-import MagicFormButton        from "./magic-form-button";
+import MagicButton            from "../magic-button/magic-button";
 import {ZengularNotification} from "zengular-ui";
 
-export default class MagicFormButtonReloadBrick extends MagicFormButton {
+
+export default class MagicFormButtonReloadBrick extends MagicButton {
 	get icon(){ return "fal fa-recycle";}
 	get title(){ return "files";}
 	get visible(){ return this.id;}

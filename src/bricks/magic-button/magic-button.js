@@ -18,11 +18,8 @@ export default class MagicButton extends Brick {
 
 	click(){console.log('you should do something!');}
 
-	createViewModel() { console.log({icon: this.icon, title: this.title, visible: this.visible}); return {icon: this.icon, title: this.title, visible: this.visible}}
+	createViewModel() { return {icon: this.icon, title: this.title, visible: this.visible}}
 	onRender() {
-		console.log(this.constructor.name)
-		console.log(this.constructor.twig)
-		console.log('onrender')
 		this.$$('button').on.mouse.click(() => this.click());
 	}
 }

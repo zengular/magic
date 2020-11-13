@@ -25,19 +25,24 @@ export default class MagicFormWrapperBrick extends Brick {
 	}
 
 	createViewModel() {
-//		let form = {
-//			tag: typeof this.handler.form.brick === 'function' ? this.handler.form.brick.tag : this.handler.form.brick.brick.tag,
-//			data: typeof this.handler.form.brick === 'function' ? {} : this.handler.form.brick.data
-//		}
-
 		return {
-//			form: form,
 			handler: this.handler,
 			head: this.head,
 			item: this.item,
 			id: this.id
 		}
 	}
+
+	get id() {return this._id;}
+	set id(id) { this._id = id;}
+	get label(){ return this.id; }
+	get guid() { return this.item.guid ? this.item.guid : null; }
+
+
+	init(id, item) {
+		return {id: this.id, label: this.label, guid: this.guid};
+	}
+
 
 	load(id) {
 		return this.handler.fetch.get(id)

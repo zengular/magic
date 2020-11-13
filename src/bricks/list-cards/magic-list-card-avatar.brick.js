@@ -9,4 +9,9 @@ export default class MagicListCardAvatarBrick extends MagicListCardBrick {
 	onRender(viewModel) {
 		if (viewModel.data.head.status === false) this.root.classList.add('faded');
 	}
+	init(id, item) {
+		let data = super.init(id, item);
+		data.head.avatar = this.avatar;
+		return data;
+	}
 }

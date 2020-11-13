@@ -6,6 +6,7 @@ export default class MagicFormButtonFilesBrick extends MagicButton {
 	get icon(){ return "fal fa-folder";}
 	get title(){ return "files";}
 	get visible(){ return this.id;}
+	get collections(){return [];}
 	click() {
 		MagicAttachmentsModal.modalify({handler: this.form.handler, id: this.form.id, api: this.dataset.api, collections: this.collections})
 	}

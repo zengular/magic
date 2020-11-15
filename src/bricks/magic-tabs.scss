@@ -1,5 +1,6 @@
 [is=magic-tabs]{
-	background-color: #14181a;
+	background-color: #14181acc;
+	backdrop-filter: blur(9px);
 	white-space: nowrap;
 	overflow-x: auto;
 	overflow-y: hidden;
@@ -20,12 +21,12 @@
 			width: 0;
 			border-right: 1px solid #fff1;
 		}
-		background-color: #232f35;
+		//background-color: #232f35;
 		position: relative;
 		cursor: pointer;
 		max-width: 200px;
 		color:#fff9;
-		border-top: 3px solid #14181a;
+		border-top: 3px solid transparent;
 		border-bottom: 1px solid #0002;
 		height: 48px;
 		padding:8px;
@@ -44,11 +45,15 @@
 			right: 3px;
 			border: 0;
 			border-radius: 3px;
-			background-color: transparent;
 			font-size: 11px;
 			cursor: pointer;
 			color: #666;
 			display: none;
+			background-color: #fff;
+			border-radius: 5px;
+			width: 12px;
+			padding: 0;
+			text-align: center;
 		}
 		&.selected{
 			background-color: white;

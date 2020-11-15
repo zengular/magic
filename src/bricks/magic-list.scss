@@ -1,5 +1,6 @@
 [is=magic-list] {
-	background-color: #8798a999;
+	background-color: #0003;
+	backdrop-filter: blur(9px);
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -7,7 +8,7 @@
 	header {
 		flex-shrink: 0;
 		div.main {
-			background-color: #14181a;
+			background-color: #14181acc;
 			display: grid;
 			grid-template-areas:
 				"icon label nav"
@@ -159,7 +160,7 @@
 			margin-bottom: 8px;
 			padding: 8px;
 			border-radius: 8px;
-			background-color: #e7ebef;
+			background: linear-gradient(180deg, rgba(255,255,255,.8) 43%, rgba(255,255,255,0.9) 100%);
 			display: grid;
 			overflow: hidden;
 			max-width: calc(100% - 8px);;

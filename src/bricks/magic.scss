@@ -10,9 +10,14 @@
 	[is=magic-list]{
 		grid-area: lst;
 		display: none;
+		z-index: 2;
 	}
 	[is=magic-list]:first-of-type, :not([is=magic-list]) + [is=magic-list]{display: flex;}
 
+	>.form{
+		background: linear-gradient(180deg,#fff 13%,hsla(0,0%,100%,.6));
+		backdrop-filter: blur(8px);
+	}
 	>.form{
 		grid-area: frm;
 		display: none;

@@ -1,8 +1,10 @@
-[is=magic-nav]>nav {
+[is=magic-nav] > nav {
 	user-select: none;
 	font-size: 11px;
 	div.block {
+		background-color: #0001;
 		> div.label {
+			transition: all .2s;
 			border-bottom: 1px solid #ffffff11;
 			cursor: pointer;
 			font-weight: bold;
@@ -12,16 +14,23 @@
 				width: 32px;
 				padding-left: 0;
 				transition: all .2s;
-				color:#00b7ff;
+				color: #ffffff;
+				//text-shadow: 0 0 11px #310404;
 			}
-			&:hover i {padding-left: 10px;}
+			&:hover {
+				text-shadow: 0 0 11px #fff;
+				i {
+					padding-left: 10px;
+					text-shadow: 0 0 11px #fff;
+				}
+			}
 			&:after {
 				font-family: "Font Awesome 5 Pro";
 				content: "\f053";
 				font-weight: 100;
 				float: right;
 				font-size: 10px;
-				color: #999;
+				color: #fff6;
 			}
 		}
 		div.items {
@@ -40,14 +49,26 @@
 		}
 	}
 	div.items > div {
+		background-color: #0001;
+
 		cursor: pointer;
 		border-bottom: 1px solid #ffffff11;
 		padding: 0 16px;
 		line-height: 30px;
-		i {width: 32px;padding-left: 0; transition: all .2s;				color:#00b7ff;
+		transition: all .2s;
+		i {
+			width: 32px;
+			padding-left: 0;
+			transition: all .2s;
+			color: #ffffff;
+			//text-shadow: 0 0 11px #310404;
 		}
 		&:hover {
-			i {padding-left: 10px;}
+			text-shadow: 0 0 11px #fff;
+			i {
+				padding-left: 10px;
+				text-shadow: 0 0 11px #fff;
+			}
 		}
 	}
 }

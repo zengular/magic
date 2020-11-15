@@ -6,6 +6,7 @@ import MagicTabsBrick              from "./src/bricks/magic-tabs.brick";
 import MagicTabBrick               from "./src/bricks/magic-tab.brick";
 import MagicNavBrick               from "./src/bricks/magic-nav.brick";
 import MagicMenuBrick              from "./src/bricks/magic-menu.brick";
+import MagicLoginBrick             from "./src/bricks/magic-login.brick";
 import MagicListBrick              from "./src/bricks/magic-list.brick";
 import MagicFormWrapperBrick       from "./src/bricks/magic-form-wrapper.brick";
 import MagicFormBrick              from "./src/bricks/magic-form.brick";

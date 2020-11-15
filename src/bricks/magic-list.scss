@@ -24,7 +24,9 @@
 				line-height: 48px;
 				width: 48px;
 				text-align: center;
-				color: #00b7ff;
+				color: #fff;
+				text-shadow: 0px 5px 11px black;
+				font-size: 24px;
 			}
 
 			label {
@@ -41,13 +43,18 @@
 			}
 			nav {
 				grid-area: nav;
-				color: #fff;
+				color: #fffb;
 				display: flex;
 				i {
 					line-height: 48px;
 					width: 32px;
 					text-align: center;
 					cursor: pointer;
+					transition: all .2s;
+					&:hover{
+						color:#fff;
+						text-shadow: 0 0 11px #fff;
+					}
 				}
 			}
 
@@ -160,7 +167,7 @@
 			margin-bottom: 8px;
 			padding: 8px;
 			border-radius: 8px;
-			background: linear-gradient(180deg, rgba(255,255,255,.8) 43%, rgba(255,255,255,0.9) 100%);
+			background: linear-gradient(180deg, rgba(0,0,0,.6) 43%, rgba(0,0,0,0.8) 100%);
 			display: grid;
 			overflow: hidden;
 			max-width: calc(100% - 8px);;
@@ -171,7 +178,7 @@
 			&:hover {
 				box-shadow: 0px 0px 5px -8px rgba(0, 0, 0, 0.3);
 				.label {color: #00b7ff;}
-				background-color: white;
+				background-color: #0009;
 			}
 			&.large {
 				min-width: calc(100% - 8px);

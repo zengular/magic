@@ -16,10 +16,10 @@
 		margin-bottom: 16px;
 		margin-right: 16px;
 		overflow: hidden;
-		background-color: #f2f3f5;
+		background-color: #fff1;
 		> label {
 			display: block;
-			background-color: #5f7893;
+			background-color: #fff1;
 			color: white;
 			font-size: 14px;
 			font-weight: bold;
@@ -38,17 +38,17 @@
 			font-size: 11px;
 			background-color: #F8F9F8;
 			color: #666;
-			border-bottom: 1px solid #ddd;
+			border-bottom: 1px solid #fff1;
 			a { color: #00b7ff;}
 			a:hover { text-decoration: underline;}
 		}
 		div.input {
 			//display: flex;
 			padding: 0 0 0 0;
-			box-shadow: 0 10px 8px -10px inset rgba(0, 0, 0, .1);
+			box-shadow: inset 0px 15px 11px -10px rgba(0,0,0,.2);
 			&[data-error] {
 				&:before {
-					box-shadow: 0 10px 8px -10px inset rgba(0, 0, 50, .4);
+					box-shadow: inset 0px 15px 11px -10px rgba(0,0,0,.2);
 					display: block;
 					width: 100%;
 					content: attr(data-error);
@@ -69,7 +69,6 @@
 				> label {
 					width: 120px;
 					padding: 8px 16px;
-					border-right: 1px solid #e4e4e4;
 				}
 				> label + div {
 					padding: 8px;
@@ -81,11 +80,12 @@
 				}
 			}
 			> label {
+				min-height: 26px;
 				display: block;
-				color: #556573;
 				font-size: 11px;
-				line-height: 26px;
-				font-weight: bold;
+				display: flex;
+				align-items: center;
+				color: #fffa;
 				padding: 0 16px 0 16px;
 				&.hinted {
 					cursor: pointer;
@@ -106,7 +106,7 @@
 				flex-grow: 1;
 			}
 			&:not(:last-of-type) {
-				border-bottom: 1px solid #ddd;
+				border-bottom: 1px dotted #fff1;
 			}
 		}
 	}

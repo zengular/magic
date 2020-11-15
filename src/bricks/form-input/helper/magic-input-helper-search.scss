@@ -6,11 +6,12 @@
 		width: 100%;
 		padding: 0 8px;
 		line-height: 26px;
-		border:1px solid #ddd;
+		border-bottom:1px solid #ddd;
 		border-radius: 4px 4px 0 0 !important;
 		color: #0080b3;
 		font-weight: 500;
-		background-color: white;
+		color: #5fd1ff;
+		background-color: #0009;
 	}
 	>div:empty+input{
 		border-radius: 4px!important;
@@ -19,12 +20,13 @@
 		&:empty{display: none;}
 		font-size:12px;
 		line-height: 26px;
-		border:1px solid #ddd;
+		//border:1px solid #ddd;
 		border-top:0;
 		border-radius: 0 0 4px 4px;
 		color: #818181;
 		font-weight: 400;
-		background-color: white;
+		color: #5fd1ff;
+		background-color: #0009;
 		max-height: 100px;
 		overflow: auto;
 		cursor: pointer;
@@ -35,7 +37,7 @@
 				color:white;
 			}
 			&:not(:last-of-type){
-				border-bottom:1px solid #eee;
+				border-bottom:1px solid #fff1;
 			}
 			&:before{
 				font-family: "Font Awesome 5 Pro";

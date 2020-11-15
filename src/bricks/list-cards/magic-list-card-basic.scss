@@ -31,20 +31,20 @@
 		top:0px;
 		right: 0px;
 		font-size: 11px;
-		background-color: white;
-		border-radius: 8px;
-		width: 16px;
-		height: 16px;
-		line-height: 16px;
+		background-color: #fff2;
+		border-radius: 0 8px;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
 		text-align: center;
-		color:#666;
+		color: #fff;
 	}
 
 	div.label {
 		grid-area: label;
 		font-size: 13px;
 		font-weight: bold;
-		color: #666;
+		color: #fffd;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -52,7 +52,7 @@
 	div.id {
 		grid-area: id;
 		font-size: 10px;
-		color: #666;
+		color: #fffb;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -61,14 +61,14 @@
 	div.properties {
 		margin-top: 4px;
 		padding-top: 4px;
-		border-top: 1px solid #0002;
+		border-top: 1px dotted #fff1;
 		grid-area: properties;
 		font-size: 10px;
-		color: #666;
+		color: #fffa;
 		div {
 			display: flex;
 			label {
-				color: #999;
+				color: #fff9;
 				display: inline-block;
 				width: 100px;
 				overflow: hidden;
@@ -85,5 +85,6 @@
 			}
 		}
 	}
+
 }
 

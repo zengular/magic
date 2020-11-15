@@ -15,7 +15,7 @@
 	[is=magic-list]:first-of-type, :not([is=magic-list]) + [is=magic-list]{display: flex;}
 
 	>.form{
-		background: linear-gradient(180deg,#fff 13%,hsla(0,0%,100%,.6));
+		background: linear-gradient(180deg,#000 13%, #0008);
 		backdrop-filter: blur(8px);
 	}
 	>.form{

@@ -2,29 +2,30 @@
 	input{
 		display: block;
 		width: 100%;
-		border:1px solid #ddd;
+		border:none;
 		padding: 0 8px;
 		line-height: 26px;
 		border-radius: 4px;
-		color: #0080b3;
 		font-weight: 500;
-		background-color: white;
+		color: #5fd1ff;
+		background-color: #0009;
+		border-bottom: 1px solid #fff3;
 	}
 
 	div[\(items\)]{
 		>div{
 		margin-top:8px;
 			display: inline-block;
-			border:1px solid #ddd;
 			padding: 0 8px;
 			line-height: 26px;
 			border-radius: 4px;
 			font-size:12px;
-			color: #0080b3;
+			color: #5fd1ff;
+			background-color: #0009;
 			font-weight: 500;
-			background-color: white;
 			margin-right: 8px;
 			cursor: pointer;
+			border-bottom: 1px solid #fff3;
 			&:before{
 				display: inline-block;
 				width: 20px;

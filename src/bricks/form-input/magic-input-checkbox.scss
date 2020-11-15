@@ -1,3 +1,26 @@
 [is=magic-input-checkbox]{
 	line-height: 26px;
+	input{
+		-moz-appearance:none;
+		-webkit-appearance:none;
+		-o-appearance:none;
+		outline: none;
+		content: none;
+		cursor: pointer;
+		text-shadow: 0 0 6px black;
+	}
+
+	input:before {
+		font-family: "Font Awesome 5 Pro";
+		content: "\f205";
+		font-size: 16px;
+		color: #5fd1ff;
+		font-size: 20px;
+	}
+
+	input:checked:before {
+		content: "\f204";
+		//color: #fff9;
+		font-weight: 100;
+	}
 }

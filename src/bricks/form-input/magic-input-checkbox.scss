@@ -12,14 +12,14 @@
 
 	input:before {
 		font-family: "Font Awesome 5 Pro";
-		content: "\f205";
+		content: "\f204";
 		font-size: 16px;
 		color: #5fd1ff;
 		font-size: 20px;
 	}
 
 	input:checked:before {
-		content: "\f204";
+		content: "\f205";
 		//color: #fff9;
 		font-weight: 100;
 	}

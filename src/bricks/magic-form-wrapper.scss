@@ -12,7 +12,12 @@
 		grid-template-areas: "icon name nav" "icon id nav";
 		grid-template-columns: 60px 1fr auto;
 		grid-template-rows: 36px 30px;
-//		border-bottom: 1px solid #ddd;
+		border-bottom: 1px dotted #fff1;
+		position: sticky;
+		top: 0;
+		z-index: 5;
+		background-color: black;
+
 		> i {
 			grid-area: icon;
 			color: #00b7ff;

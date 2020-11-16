@@ -9,15 +9,14 @@ import MagicInputTextEditorModalBrick
 @Brick.register('magic-input-text', twig)
 export default class MagicInputTextBrick extends MagicInput {
 
-	createViewModel() {
-		let viewModel = super.createViewModel();
-		viewModel.editor = this.dataset.editor;
-		return viewModel;
+	static setAttributes(editor) {
+		if(typeof editor === "function") editor = editor.tag;
+		return {editor};
 	}
 
 	onRender() {
 		this.$$('open-editor').listen('click', (event) => {
-			MagicInputTextEditorModalBrick.modalify({input: this, editor: this.dataset.editor, props: this.props});
+			MagicInputTextEditorModalBrick.modalify({input: this, editor: this.attributes.editor, attributes: this.attributes});
 		});
 	}
 }

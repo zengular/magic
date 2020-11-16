@@ -10,22 +10,27 @@ export default class MagicInput extends Brick {
 		this.name = this.dataset.name;
 	}
 
-	set value(value) { if(typeof value !== "undefined") this.$$('input').node.value = value;}
+	onInitialize() { this.attributes = this.readDataset();}
+
+	readDataset() { return Object.assign({}, this.dataset); }
+
+	setAttributes(attributes) { this.attributes = Object.assign(this.attributes, attributes); }
+
+	set value(value) { if (typeof value !== "undefined") this.$$('input').node.value = value;}
 	get value() {return this.$$('input').node.value;}
 
 	createViewModel() {
 		return {
-			props: this.props,
+			attributes: this.attributes,
 			name: this.name,
 			handler: this.handler
 		};
 	}
 
-	setup(item, handler, props) {
-		this.props = props[this.name];
+	setup(item, handler, attributes) {
+		this.attributes = Object.assign(this.attributes, attributes[this.name]);
 		this.handler = magic.getHandler(handler);
-		this.render()
-			.then(() => this.value = item[this.name])
+		this.render().then(() => this.value = item[this.name])
 	}
 
 }

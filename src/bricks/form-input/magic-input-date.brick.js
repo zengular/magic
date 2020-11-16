@@ -9,5 +9,4 @@ export default class MagicInputDateBrick extends MagicInput {
 		value = value.substr(0,10);
 		this.$$('input').node.value = value;
 	}
-
 }

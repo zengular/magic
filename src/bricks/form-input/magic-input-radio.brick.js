@@ -7,11 +7,13 @@ import MagicInput from "./magic-input";
 @Brick.register('magic-input-radio', twig)
 export default class MagicInputRadioBrick extends MagicInput {
 
-	createViewModel() {
-		let viewModel = super.createViewModel();
-		viewModel.options = typeof this.dataset.options !== "undefined" ? this.dataset.options.split(',').map(item=>item.trim()) : (this.props ? this.props.options : []);
-		return viewModel;
+	readDataset() {
+		let attributes = super.readDataset();
+		if (typeof attributes.options) attributes.options = attributes.options.split(',').map(item => item.trim());
+		return attributes;
 	}
+
+	static setAttributes(options) {return {options: options};}
 
 	get value() {
 		let value = null;

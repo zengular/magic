@@ -6,9 +6,13 @@ import MagicInput from "./magic-input";
 
 @Brick.register('magic-input-select', twig)
 export default class MagicInputSelectBrick extends MagicInput {
-	createViewModel() {
-		let viewModel = super.createViewModel();
-		viewModel.options = typeof this.dataset.options !== "undefined" ? this.dataset.options.split(',').map(item=>item.trim()) : (this.props ? this.props.options : []);
-		return viewModel;
+
+	readDataset() {
+		let attributes = super.readDataset();
+		if (typeof attributes.options) attributes.options = attributes.options.split(',').map(item => item.trim());
+		return attributes;
 	}
+
+	static setAttributes(options) {return {options};}
+
 }

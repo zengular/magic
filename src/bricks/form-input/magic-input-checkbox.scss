@@ -14,13 +14,16 @@
 		font-family: "Font Awesome 5 Pro";
 		content: "\f204";
 		font-size: 16px;
-		color: #5fd1ff;
+		color: #00b7ff;
+		transition: text-shadow .2s;
 		font-size: 20px;
 	}
-
+	input:checked{
+		text-shadow: 0 0 6px white;
+	}
 	input:checked:before {
 		content: "\f205";
-		//color: #fff9;
+		color: #5fd1ff;
 		font-weight: 100;
 	}
 }

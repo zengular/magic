@@ -7,25 +7,22 @@ import MagicInput from "./magic-input";
 @Brick.register('magic-input-selector', twig)
 export default class MagicInputSelectorBrick extends MagicInput {
 
-	onInitialize() {
-		this.minchar = this.dataset.minchar ?? 3;
-		this.multi = typeof this.dataset.multi !== 'undefined';
-		if (this.multi) {
-			this.multi = this.dataset.multi === '' ? Infinity : parseInt(this.dataset.multi);
-		}
+	constructor(root) {
+		super(root);
+		this.attributes = {
+			multi: false,
+			minchar: 3
+		};
 	}
 
-	createViewModel() {
-		let viewModel = super.createViewModel();
-		viewModel.minchar = this.minchar;
-		viewModel.api = this.dataset.api ? this.dataset.api : (this.props ? this.props.api : null);
-		return viewModel;
+	static setAttributes(api, multi = false, minchar = 3) {
+		return {api, multi, minchar};
 	}
 
 	get value() {
 		let value;
 		let items = this.$$('items').node.children;
-		if (this.multi) {
+		if (this.attributes.multi) {
 			value = [];
 			items.forEach(child => value.push(child.dataset.key))
 		} else {
@@ -42,10 +39,10 @@ export default class MagicInputSelectorBrick extends MagicInput {
 
 		if (this.$$('items').filter(' [data-key="' + key + '"]').node !== null) return;
 
-		if (!this.multi) {
+		if (!this.attributes.multi) {
 			this.$$('items').node.innerHTML = '';
 			this.add(key);
-		} else if (this.$$('items').node.children.length < this.multi) this.add(key);
+		} else if (this.$$('items').node.children.length < this.attributes.multi) this.add(key);
 
 		event.cancel();
 	}

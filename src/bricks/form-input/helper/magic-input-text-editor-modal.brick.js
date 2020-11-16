@@ -12,11 +12,11 @@ export default class MagicInputTextEditorModalBrick extends Brick {
 			this.input.value = this.$$('editor').brick.value;
 			this.close();
 		});
-		this.$$('editor').brick.render({props: this.props, value: this.input.value});
+		this.$$('editor').brick.render({attributes: this.attributes, value: this.input.value});
 	}
 
 	beforeRender(args) {
-		this.props = args.props;
+		this.attributes = args.attributes;
 		this.editor = args.editor;
 		this.input = args.input;
 	}

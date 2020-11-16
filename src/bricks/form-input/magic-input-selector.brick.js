@@ -21,7 +21,7 @@ export default class MagicInputSelectorBrick extends MagicInput {
 
 	get value() {
 		let value;
-		let items = this.$$('items').node.children;
+		let items = Array.from(this.$$('items').node.children);
 		if (this.attributes.multi) {
 			value = [];
 			items.forEach(child => value.push(child.dataset.key))
@@ -48,6 +48,7 @@ export default class MagicInputSelectorBrick extends MagicInput {
 	}
 
 	add(key) {
+		if(!Array.isArray(key) && typeof key === "object") key = Object.values(key);
 		if(Array.isArray(key)) key = key.join(',');
 		let api = this.dataset.api ? this.dataset.api : this.props.api;
 		fetch(api + '/' + key)

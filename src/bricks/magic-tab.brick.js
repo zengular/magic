@@ -12,10 +12,10 @@ import TabData               from "../modules/tab-data";
 @Brick.register('magic-tab', twig)
 export default class MagicTabBrick extends Brick {
 
-	set id(id){ this.root.dataset.tabId = id;}
-	set icon(icon){ this.$$('icon').node.className = icon;}
-	set title(title){ this.$$('title').node.innerHTML = title;}
-	set label(label){ this.$$('label').node.innerHTML = label;}
+	set id(id) { this.root.dataset.tabId = id;}
+	set icon(icon) { this.$$('icon').node.className = icon;}
+	set title(title) { this.$$('title').node.innerHTML = title;}
+	set label(label) { this.$$('label').node.innerHTML = label;}
 
 	activateForm() { this.fire(magic.event.activateForm, {form: this.form})}
 
@@ -36,8 +36,10 @@ export default class MagicTabBrick extends Brick {
 	}
 
 	remove() {
-		if (this.root.nextSibling !== null) this.fire('change-tab', {tab: this.root.nextSibling.controller});
-		else if (this.root.previousSibling !== null) this.fire('change-tab', {tab: this.root.previousSibling.controller});
+		if (this.root.classList.contains('selected')) {
+			if (this.root.nextSibling !== null) this.fire('change-tab', {tab: this.root.nextSibling.controller});
+			else if (this.root.previousSibling !== null) this.fire('change-tab', {tab: this.root.previousSibling.controller});
+		}
 		this.form.root.remove();
 		this.root.remove();
 	}

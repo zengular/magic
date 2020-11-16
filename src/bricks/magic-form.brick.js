@@ -30,12 +30,12 @@ export default class MagicFormBrick extends Brick {
 					let label = document.createElement('label');
 					label.innerHTML = this.handler.translate(['input', input.dataset.name]);
 
-					let hint = this.$('.hint[data-for="'+input.dataset.name+'"]').node;
-					if(hint !== null){
+					let hint = this.$('.hint[data-for="' + input.dataset.name + '"]').node;
+					if (hint !== null) {
 						label.classList.add('hinted');
-						label.addEventListener('click', event=>{
-							hint.classList.toggle('visible')
-						})
+						label.addEventListener('click', event => hint.classList.toggle('visible'));
+						input.after(hint);
+
 					}
 
 					wrapper.classList.add('input');
@@ -49,13 +49,13 @@ export default class MagicFormBrick extends Brick {
 			});
 	}
 
-	error(field, message){
-		let input = this.$('div.input[data-name="'+field+'"]').node;
-		if(input) input.dataset.error = '▼ '+message;
+	error(field, message) {
+		let input = this.$('div.input[data-name="' + field + '"]').node;
+		if (input) input.dataset.error = '▼ ' + message;
 	}
 
-	clearErrors(){
-		this.$('div.input').each(input=>input.removeAttribute("data-error"));
+	clearErrors() {
+		this.$('div.input').each(input => input.removeAttribute("data-error"));
 	}
 
 	get data() {

@@ -7,8 +7,9 @@
 
 	header {
 		flex-shrink: 0;
+		background-color: #0007;
 		div.main {
-			background-color: #14181acc;
+			background-color: #14181a99;
 			display: grid;
 			grid-template-areas:
 				"icon label nav"

@@ -1,5 +1,5 @@
 <div>
 	{% for option in attributes.options %}
-		<label title="{{ handler.translate(['option',name,option]) }}"><input (input) type="radio" name="{{ 'radio.'~handler~'.'~name }}" value="{{ option }}"> {{ handler.translate(['option',name,option]) }}</label>
+		<label title="{{ handler.translate(['option',name,option]) }}"><input (input) type="radio" name="{{ attributes.radioname }}" value="{{ option }}"> {{ handler.translate(['option',name,option]) }}</label>
 	{% endfor %}
 </div>

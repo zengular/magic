@@ -12,7 +12,7 @@ export default class MagicFetch {
 	}
 	get(id) {return fetch(this.api + '/get/' + id + this.query);}
 	blank() {return fetch(this.api + '/get' + this.query);}
-	create(data) {return fetch(this.api + '/save'+ this.query, {method: 'POST', body: JSON.stringify(data)})}
+	create(data) {return fetch(this.api + '/save' + this.query, {method: 'POST', body: JSON.stringify(data)})}
 	save(id, data) {
 		return fetch(this.api + '/save/' + id + this.query, {
 			method: 'POST',
@@ -20,4 +20,5 @@ export default class MagicFetch {
 		});
 	}
 	delete(id) { return fetch(this.api + '/delete/' + id + this.query, {method: "DELETE"});}
+	attachment(action, data) { return fetch(this.api + '/attachment/' + action, {method: 'POST', body: data});}
 }

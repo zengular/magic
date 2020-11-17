@@ -7,8 +7,12 @@ import "./magic-attachments.scss";
 import {getClassNameForExtension} from "font-awesome-filetypes";
 import Contextmenu                from "zengular-ui/contextmenu/contextmenu";
 import MagicImageEditorModal      from "./magic-image-editor.modal";
+import {Handler}                  from "zengular-magic";
 
 
+/**
+ * @property {Handler} handler
+ */
 @modalify()
 @Brick.register('magic-attachments', twig)
 @Brick.renderOnConstruct(false)
@@ -69,7 +73,7 @@ export default class MagicAttachmentsModal extends Brick {
 		for (let i = 0; i < collections.length; i++) {
 			formData.append('collections[' + i + ']', collections[i]);
 		}
-		return fetch(this.api + '/get', {method: 'POST', body: formData})
+		return this.handler.fetch.attachment('get', formData)
 			.then(res => res.json())
 			.then(attachments => Object({
 				attachments,
@@ -200,22 +204,18 @@ export default class MagicAttachmentsModal extends Brick {
 			formData.append('id', this.id);
 			formData.append('collection', collection);
 			formData.append('file', file)
-			let upload = fetch(this.api + '/upload', {
-				method: 'POST',
-				body: formData,
-			})
-			uploads.push(upload);
+			updloads.push( this.handler.fetch.attachment('upload', formData));
 		}
 		Promise.all(uploads).finally(() => this.render())
 	}
 
-	copyAttachment(method, filename, source, target) {
+	copyAttachment(action, filename, source, target) {
 		let formData = new FormData();
 		formData.append('id', this.id);
 		formData.append('filename', filename);
 		formData.append('source', source);
 		formData.append('target', target);
-		fetch(this.api + '/' + method, {method: 'POST', body: formData})
+		this.handler.fetch.attachment(action, formData)
 			.finally(() => this.render());
 	}
 
@@ -224,7 +224,7 @@ export default class MagicAttachmentsModal extends Brick {
 		formData.append('id', this.id);
 		formData.append('filename', filename);
 		formData.append('collection', collection)
-		fetch(this.api + '/delete', {method: 'POST', body: formData})
+		this.handler.fetch.attachment('delete', formData)
 			.finally(() => this.render());
 	}
 
@@ -234,7 +234,7 @@ export default class MagicAttachmentsModal extends Brick {
 		formData.append('filename', filename);
 		formData.append('collection', collection)
 		formData.append('data', JSON.stringify(data))
-		fetch(this.api + '/crop', {method: 'POST', body: formData})
+		this.handler.fetch.attachment('crop', formData)
 			.finally(() => this.render());
 	}
 
@@ -246,7 +246,7 @@ export default class MagicAttachmentsModal extends Brick {
 			formData.append('filename', filename);
 			formData.append('newname', newname);
 			formData.append('id', this.id);
-			fetch(this.api + '/rename', {method: 'POST', body: formData})
+			this.handler.fetch.attachment('rename', formData)
 				.finally(() => this.render());
 		}
 	}
@@ -257,7 +257,7 @@ export default class MagicAttachmentsModal extends Brick {
 		formData.append('filename', filename);
 		formData.append('ordinal', ordinal);
 		formData.append('id', this.id);
-		fetch(this.api + '/reorder', {method: 'POST', body: formData})
+		this.handler.fetch.attachment('reorder', formData)
 			.finally(() => this.render());
 	}
 

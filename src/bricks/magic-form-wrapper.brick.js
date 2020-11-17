@@ -35,7 +35,7 @@ export default class MagicFormWrapperBrick extends Brick {
 
 	get id() {return this._id;}
 	set id(id) { this._id = id;}
-	get label(){ return this.id; }
+	get label() { return this.id; }
 	get guid() { return this.item.guid ? this.item.guid : null; }
 
 
@@ -45,7 +45,8 @@ export default class MagicFormWrapperBrick extends Brick {
 
 
 	load(id) {
-		return this.handler.fetch.get(id)
+		let fetch = id === null ? this.handler.fetch.blank() : this.handler.fetch.get(id);
+		return fetch
 			.then(res => res.json())
 			.then(data => {
 				this.id = data.id;
@@ -94,7 +95,7 @@ export default class MagicFormWrapperBrick extends Brick {
 				});
 				throw 'error'
 			})
-			.then(data => this.handler.fetch.save(this.id, data))
+			.then(data => this.id ? this.handler.fetch.save(this.id, data) : this.handler.fetch.create(data))
 			.then(res => {
 				if (res.status === 200) {
 					res.json()

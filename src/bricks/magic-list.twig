@@ -3,13 +3,7 @@
 		<i class="icon {{ handler.translate('icon.large', 'fad fa-rocket') }}"></i>
 		<label>{{ handler.translate('label.list', handler.name) }}</label>
 		<var (count)></var>
-		<nav (nav)>
-{#			{% for button in buttons %}#}
-{#				{% if button.render %}#}
-{#					<div (form-button) is="{{ button.tag }}" {% for prop, value in button.data %} data-{{ prop }} ="{{ value }}" {% endfor %} data-handler="{{ handler.name }}" data-id="{{ id }}"></div>#}
-{#				{% endif %}#}
-{#			{% endfor %}#}
-		</nav>
+		<nav (nav)></nav>
 	</div>
 	<div class="quick-search">
 		<input (quick-search) type="search" placeholder="quick search">
@@ -19,10 +13,14 @@
 		<input (page) type="number" min="1" max="1" value="1"><span (page-count)></span>
 		<button (next)><i class="fal fa-chevron-right"></i></button>
 		<select class="order" (sort)>
-			{% for field in handler.list.sort.fields %}
-				{% set default = handler.list.sort.default %}
-				<option value="`{{ field }}` asc" {% if default.field == field and default.order=='asc' %}selected{% endif %}>▼ {{ handler.translate(['order', field]) }}</option>
-				<option value="`{{ field }}` desc"{% if default.field == field and default.order=='desc' %}selected{% endif %}>▲ {{ handler.translate(['order', field]) }}</option>
+			{% for key, value in sort %}
+				<option value="{{ key }}" data-dir="0">▼ {{ handler.translate(['order', key]) }}</option>
+				{% if value.length > 1 %}
+					<option value="{{ key }}" data-dir="1">▲ {{ handler.translate(['order', key]) }}</option>
+				{% endif %}
+{#				{% set default = handler.list.sort.default %}#}
+{#				<option value="`{{ field }}` asc" {% if default.field == field and default.order=='asc' %}selected{% endif %}>▼ {{ handler.translate(['order', field]) }}</option>#}
+{#				<option value="`{{ field }}` desc"{% if default.field == field and default.order=='desc' %}selected{% endif %}>▲ {{ handler.translate(['order', field]) }}</option>#}
 			{% endfor %}
 		</select>
 		{% if search %}<button (open-search)><i class="fal fa-search"></i></button>{% endif %}

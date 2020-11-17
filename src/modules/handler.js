@@ -1,14 +1,14 @@
 import Brick                          from "zengular/src/brick";
 import {magic, MagicFormWrapperBrick} from "zengular-magic";
-import TabData                        from "zengular-magic/src/modules/tab-data";
+import TabData                        from "./tab-data";
+import MagicFetch                     from "./magic-fetch";
+
 
 /**
- * @property {string} api
  * @property {string} name
- * @property {string} label
- * @property {{large:string, small: string}} icon
- * @property {{button: Array, title: string, brick: Brick, setup: function, label: string}} form
- * @property {{title: string, button: Array, limit: number, search: Brick|null, card: {brick: Brick, size: string, setup: function} sort: {fields: Array, default: {field: string, order: string}}}} list
+ * @property {MagicFetch} fetch
+ * @property {Brick} form
+ * @property {{buttons: Array, limit: number, search: Brick|null, card: Brick, sort: {fields: Array, default: {field: string, order: string}}}} list
  */
 
 export default class Handler {
@@ -17,71 +17,43 @@ export default class Handler {
 	 * @param {string} name
 	 * @param {string} api
 	 */
-	constructor(name, api, q = null) {
-		this.api = api;
+	constructor(name) {
 		this.name = name;
-		this.q = q;
+		this.fetch = null;
+		this.form = null;
 
-		this.list = {};
-		this.form = {
-			button: [],
-			brick: null,
-			label: 'id',
-			setup: null
-		};
+
 		this.list = {
-			button: [],
-			limit: 50,
+			buttons: [],
+			limit: 100,
 			search: null,
-			card: {
-				brick: null,
-				size: 'large',
-				setup: null
-			},
+			card: null,
 			sort: {
-				fields: [],
+				fields: ['id'],
 				default: {
 					field: 'id',
 					order: 'asc'
 				}
 			}
 		}
-
-		this.form.super = MagicFormWrapperBrick;
-
-		this.fetch = {
-			list: (page, sort, quickSearch, search) => fetch(this.api + '/list/' + page + (q ? '?'+q : ''), {
-					method: 'POST',
-					body: JSON.stringify({sort, quickSearch, search, limit: this.list.limit})
-				}
-			),
-			get: (id) => fetch(this.api + '/get' + (id ? ('/' + id) : '') + (q ? '?'+q : '')),
-			save: (id, item) => fetch(this.api + '/save' + (id ? ('/' + id) : '') + (q ? '?'+q : ''), {
-				method: 'POST',
-				body: JSON.stringify(item)
-			}),
-			delete: (id) => fetch(this.api + '/delete/' + id + (q ? '?'+q : ''), {method: "DELETE"})
-		};
-
 	}
 
-	selectItemEventData(id = null){
+	selectItemEventData(id = null) {
 		return new TabData({
 			handler: this.name,
 			id: id
-		}, this.form, 'handler-'+this.name+'-'+ (id === null ? 'new' : id))
-
+		}, this.form, 'handler-' + this.name + '-' + (id === null ? 'new' : id))
 	}
 
 	translate(key, def = null) {
-		if(!Array.isArray(key)) key = [key];
+		if (!Array.isArray(key)) key = [key];
 		key.unshift(this.name);
 		key.unshift('handler');
 		return magic.i18n.get(key, def);
 	}
 
-	set dictionary(data){
-		let dictionary = {handler:{}}
+	set dictionary(data) {
+		let dictionary = {handler: {}}
 		dictionary['handler'][this.name] = data;
 		magic.i18n.append(dictionary)
 	}

@@ -14,25 +14,27 @@ export default class MagicListBrick extends Brick {
 		this.searchParams = [];
 		this.actor('list');
 		this.currentpage = 1;
+
+		this.sort = {};
+		let sorting = this.handler.list.sort;
+		for(let key in sorting){
+			if(sorting[key] === true || sorting[key] === null){
+				this.sort[key] = [{[key]: 'asc'},{[key]: 'desc'}];
+			}else if(sorting[key] === false){
+				this.sort[key] = [{[key]: 'desc'},{[key]: 'asc'}];
+			}else if(typeof sorting[key] === 'string'){
+				this.sort[key] = [{[sorting[key]]: 'asc'}, {[sorting[key]]: 'desc'}];
+			}else if(Array.isArray(sorting[key])){
+				this.sort[key] = sorting[key].slice(0, 2);
+			}else if(typeof sorting[key] === "object"){
+				this.sort[key] = [sorting[key]];
+			}
+		}
 	}
 
 	createViewModel() {
-		let buttons = this.handler.list.button.map(button => {
-			if (typeof button === 'function') {
-				return {
-					tag: button.tag,
-					data: {},
-					render: true
-				}
-			}
-			return {
-				tag: button.button.tag,
-				data: button.data,
-				render: button.role ? magic.user.hasRole(button.role) : true
-			}
-		});
 		return {
-			buttons,
+			sort: this.sort,
 			handler: this.handler,
 			search: this.handler.list.search !== null ? this.handler.list.search.tag : null
 		}
@@ -48,17 +50,17 @@ export default class MagicListBrick extends Brick {
 			this.loadList(page);
 		}, 300);
 		this.$$('sort').on.input(() => {this.loadList(1)});
-		this.$$('prev').on.click(() => {
+		this.$$('prev').on.click((event) => {
 			let page = parseInt(this.$$('page').node.value);
-			page--;
-			if (page < 1 || isNaN(page)) page = 1;
+			page-= event.altKey ? 10 : 1;
+			if (page < 1 || isNaN(page) || event.shiftKey) page = 1;
 			this.$$('page').node.value = page;
 			this.loadList(page);
 		});
 		this.$$('next').on.click(() => {
 			let page = parseInt(this.$$('page').node.value);
-			page++;
-			if (page < 1 || isNaN(page)) page = 1;
+			page+= event.altKey ? 10 : 1;
+			if (page > this.pageCount || isNaN(page) || event.shiftKey) page = this.pageCount;
 			this.$$('page').node.value = page;
 			this.loadList(page);
 		});
@@ -90,10 +92,12 @@ export default class MagicListBrick extends Brick {
 	}
 
 	loadData(page) {
-		let sort = this.$$('sort').node.value;
+		let sortControl = this.$$('sort').node;
+		let sort = this.sort[sortControl.children[sortControl.selectedIndex].value][sortControl.children[sortControl.selectedIndex].dataset.dir];
+
 		let quickSearch = this.$$('quick-search').node.value;
 		let search = this.searchParams.length ? this.searchParams : null;
-		return this.handler.fetch.list(page, sort, quickSearch, search)
+		return this.handler.fetch.list(page, sort, quickSearch, search, this.handler.list.limit)
 			.then(res => res.json());
 	}
 

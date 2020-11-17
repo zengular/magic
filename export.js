@@ -21,6 +21,7 @@ import MagicFormButtonSaveBrick    from "./src/bricks/form-button/magic-form-but
 import MagicFormButtonDeleteBrick  from "./src/bricks/form-button/magic-form-button-delete.brick";
 import MagicInput                  from "./src/bricks/form-input/magic-input";
 import FormBuilder                 from "./src/modules/form-builder";
+import MagicFetch                 from "./src/modules/magic-fetch";
 import MagicInputCheckboxBrick     from "./src/bricks/form-input/magic-input-checkbox.brick";
 import MagicInputCheckboxesBrick   from "./src/bricks/form-input/magic-input-checkboxes.brick";
 import MagicInputCodeBrick         from "./src/bricks/form-input/magic-input-code.brick";
@@ -76,5 +77,6 @@ export {
 	MagicInputStringBrick,
 	MagicInputTextBrick,
 	MagicInputTimeBrick,
-	FormBuilder
+	FormBuilder,
+	MagicFetch
 }

@@ -13,18 +13,17 @@ export default class MagicBrick extends Brick {
 	@Brick.listen(magic.event.itemChanged)
 	__reloadList(event) {
 		let list = this.$$('list').filter('[data-handler=' + event.data.handler + ']').brick;
-		if (list !== null) list.loadList();
+		if (list !== null && typeof list.loadList === "function") list.loadList();
 	}
 
 	@Brick.listen(magic.event.menuHandlerSelected)
 	__menuHandlerSelected(event) {
 		let list = this.findList(event.data.handler);
 		if (list === null) {
-			list = MagicListBrick.createBrickElement();
-			list.dataset.handler = event.data.handler;
-			this.root.appendChild(list);
-		}
-		this.root.prepend(list)
+			let handler = magic.getHandler(event.data.handler);
+			handler.list.create('div', true, {handler: event.data.handler})
+				.then(list => this.root.prepend(list.root));
+		}else this.root.prepend(list)
 	}
 
 	@Brick.listen([magic.event.selectItem, magic.event.addNewItem])

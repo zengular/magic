@@ -19,23 +19,16 @@ export default class Handler {
 	 */
 	constructor(name) {
 		this.name = name;
-		this.fetch = null;
+		this.fetcher = null;
 		this.form = null;
-
-
-		this.list = {
-			buttons: [],
-			limit: 100,
-			search: null,
-			card: null,
-			sort: {
-				fields: ['id'],
-				default: {
-					field: 'id',
-					order: 'asc'
-				}
-			}
-		}
+		this.list = null
+	}
+	/**
+	 * @returns {*}
+	 */
+	get fetch(){
+		if(typeof this._fetch === "undefined") this._fetch = new this.fetcher();
+		return this._fetch;
 	}
 
 	selectItemEventData(id = null) {

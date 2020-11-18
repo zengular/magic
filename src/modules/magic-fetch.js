@@ -1,8 +1,11 @@
 export default class MagicFetch {
-	constructor(api, query = null) {
-		this.api = api;
-		this.query = query === null ? '' : '?' + query;
+	constructor() {
+//		this.api = api;
+//		this.query = query === null ? '' : '?' + query;
 	}
+
+	get api(){return '';}
+	get query(){return '';}
 
 	list(page, sort, quickSearch, search, limit) {
 		return fetch(this.api + '/list/' + page + this.query, {

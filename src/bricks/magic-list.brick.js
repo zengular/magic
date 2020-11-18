@@ -1,12 +1,19 @@
-import {Brick}  from "zengular";
-import twig     from "./magic-list.twig";
+import {Brick}                   from "zengular";
+import twig                      from "./magic-list.twig";
 import "./magic-list.scss";
-import magic    from "../modules/magic";
-import registry from "zengular/src/brick-registry";
+import magic                     from "../modules/magic";
+import registry                                           from "zengular/src/brick-registry";
+import {MagicListButtonAddBrick, MagicListCardBasicBrick} from "zengular-magic";
 
 
 @Brick.register('magic-list', twig)
 export default class MagicListBrick extends Brick {
+
+	get buttons(){ return [MagicListButtonAddBrick]; }
+	get limit(){return 100;}
+	get search(){ return null; }
+	get card(){ return MagicListCardBasicBrick; }
+	get sorting(){ return {id:true}; }
 
 	onInitialize() {
 		this.pageCount = 0;
@@ -16,7 +23,7 @@ export default class MagicListBrick extends Brick {
 		this.currentpage = 1;
 
 		this.sort = {};
-		let sorting = this.handler.list.sort;
+		let sorting = this.sorting;
 		for(let key in sorting){
 			if(sorting[key] === true || sorting[key] === null){
 				this.sort[key] = [{[key]: 'asc'},{[key]: 'desc'}];
@@ -36,7 +43,7 @@ export default class MagicListBrick extends Brick {
 		return {
 			sort: this.sort,
 			handler: this.handler,
-			search: this.handler.list.search !== null ? this.handler.list.search.tag : null
+			search: this.search !== null ? this.search.tag : null
 		}
 	}
 
@@ -64,7 +71,7 @@ export default class MagicListBrick extends Brick {
 			this.$$('page').node.value = page;
 			this.loadList(page);
 		});
-		this.handler.list.buttons.forEach(button=>{
+		this.buttons.forEach(button=>{
 			button.create('div', false)
 				.then(button=>{
 					button.list = this;
@@ -97,19 +104,19 @@ export default class MagicListBrick extends Brick {
 
 		let quickSearch = this.$$('quick-search').node.value;
 		let search = this.searchParams.length ? this.searchParams : null;
-		return this.handler.fetch.list(page, sort, quickSearch, search, this.handler.list.limit)
+		return this.handler.fetch.list(page, sort, quickSearch, search, this.limit)
 			.then(res => res.json());
 	}
 
 	loadList(page = null) {
 		if (page === null) page = this.currentpage;
 		this.currentpage = page;
-		let cardBrick = this.handler.list.card;
+		let cardBrick = this.card;
 
 		this.loadData(page)
 			.then(data => {
 				this.$$('count').node.innerHTML = data.count;
-				this.pageCount = Math.ceil(data.count / this.handler.list.limit);
+				this.pageCount = Math.ceil(data.count / this.limit);
 				this.$$('page-count').node.innerHTML = this.pageCount;
 				this.$$('page').node.value = data.page;
 				this.$$('list').node.innerHTML = '';

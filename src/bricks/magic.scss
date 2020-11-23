@@ -6,7 +6,11 @@
 		"nav lst tab"
 		"nav lst frm";
 	grid-template-rows: 48px 1fr;
-	grid-template-columns: 200px 400px 1fr;
+	grid-template-columns: 200px 320px 1fr;
+	@media (min-width: 1024px){grid-template-columns: 200px 380px 1fr;}
+	@media (min-width: 1200px){grid-template-columns: 200px 480px 1fr;}
+
+
 	[is=magic-list]{
 		grid-area: lst;
 		display: none;

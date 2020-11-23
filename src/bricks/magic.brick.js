@@ -23,11 +23,11 @@ export default class MagicBrick extends Brick {
 			let handler = magic.getHandler(event.data.handler);
 			handler.list.create('div', true, {handler: event.data.handler})
 				.then(list => this.root.prepend(list.root));
-		}else this.root.prepend(list)
+		} else this.root.prepend(list)
 	}
 
 	@Brick.listen([magic.event.selectItem, magic.event.addNewItem])
-	__openTab(event) { this.$$('tabs').brick.open(event.data)}
+	__openTab(event) {this.$$('tabs').brick.open(event.data);}
 
 	@Brick.listen(magic.event.activateForm)
 	__appendForm(event) { this.root.append(event.data.form.root);}

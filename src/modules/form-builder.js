@@ -41,7 +41,13 @@ class Section {
 		this.form = form;
 		this.finder = finder;
 		this.inputs = [];
+		this.add.inline = (field, input = null, attributes = {}) => {
+			let f = this.add(field, input, attributes);
+			f.setInline();
+			return f;
+		}
 	}
+
 
 	/**
 	 *

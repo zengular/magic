@@ -48,7 +48,7 @@ export default class MagicInputSelectorBrick extends MagicInput {
 	}
 
 	add(key) {
-		if(!Array.isArray(key) && typeof key === "object") key = Object.values(key);
+		if(!Array.isArray(key) && typeof key === "object" && key !== null) key = Object.values(key);
 		if(Array.isArray(key)) key = key.join(',');
 		let api = this.dataset.api ? this.dataset.api : this.props.api;
 		fetch(api + '/' + key)

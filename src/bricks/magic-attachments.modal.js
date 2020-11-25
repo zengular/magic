@@ -204,7 +204,7 @@ export default class MagicAttachmentsModal extends Brick {
 			formData.append('id', this.id);
 			formData.append('collection', collection);
 			formData.append('file', file)
-			updloads.push( this.handler.fetch.attachment('upload', formData));
+			uploads.push( this.handler.fetch.attachment('upload', formData));
 		}
 		Promise.all(uploads).finally(() => this.render())
 	}

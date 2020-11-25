@@ -1,27 +1,27 @@
 {
-  "_from": "zengular-magic@1.0.24",
-  "_id": "zengular-magic@1.0.24",
+  "_from": "zengular-magic@1.0.25",
+  "_id": "zengular-magic@1.0.25",
   "_inBundle": false,
-  "_integrity": "sha512-pg8306QWSmK6uU5zv1cglvPHCWMcjnZGEYRodSQaTKeL+HL7+HuZ2e/n50o5/EPQxtucUUNQtZuLfBtqDNDGaQ==",
+  "_integrity": "sha512-OnI5AzSX/UBjgVAbwH+tMihasbbR2NjXsujm9R2GfjE+7f3ve9/xaTwqvTBs6X9IroMqWy7tTeDBio7YXqehZg==",
   "_location": "/zengular-magic",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "zengular-magic@1.0.24",
+    "raw": "zengular-magic@1.0.25",
     "name": "zengular-magic",
     "escapedName": "zengular-magic",
-    "rawSpec": "1.0.24",
+    "rawSpec": "1.0.25",
     "saveSpec": null,
-    "fetchSpec": "1.0.24"
+    "fetchSpec": "1.0.25"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/zengular-magic/-/zengular-magic-1.0.24.tgz",
-  "_shasum": "c8d06e9c428cbaf7e1ff1ebe8cbdd50a55e4235c",
-  "_spec": "zengular-magic@1.0.24",
+  "_resolved": "https://registry.npmjs.org/zengular-magic/-/zengular-magic-1.0.25.tgz",
+  "_shasum": "36855f283cb8e53078ad8e2a1586bcbacf7e0fc9",
+  "_spec": "zengular-magic@1.0.25",
   "_where": "/Users/elvis/Work/htdocs/gamer365",
   "author": {
     "name": "Gergely Laborci"

@@ -35,7 +35,11 @@ export default class Handler {
 		return new TabData({
 			handler: this.name,
 			id: id
-		}, this.form, 'handler-' + this.name + '-' + (id === null ? 'new' : id))
+		}, this.form, this.createId(id))
+	}
+
+	createId(id){
+		return 'handler-' + this.name + '-' + (id === null || id==='' ? 'new' : id);
 	}
 
 	translate(key, def = null) {

@@ -53,6 +53,7 @@ export default class MagicFormWrapperBrick extends Brick {
 				this.item = data.item;
 				this.attributes = data.attributes;
 				this.head = this.init(this.id, this.item);
+				this.tab.dataset.tabId = this.handler.createId(this.id);
 				this.tab.label = this.head.id ? 'id: ' + this.head.id : 'new';
 				this.tab.title = this.head.label ? this.head.label : this.handler.translate('label.form');
 				this.tab.icon = this.handler.translate('icon.small', 'fad fa-rocket');
